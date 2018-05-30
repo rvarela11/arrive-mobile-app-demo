@@ -1,6 +1,6 @@
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import loginReducer from './screens/LoginScreen/reducer';
+import loginReducer from './screens/AuthScreen/reducer';
 
 const rootReducer = combineReducers({
     auth: loginReducer
