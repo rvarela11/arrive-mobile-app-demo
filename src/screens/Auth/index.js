@@ -1,16 +1,24 @@
+// Vendors
 import React,{ Component } from 'react';
 import {
   View,
-  Text
+  Text,
+  ImageBackground
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import ButtonWithBackground from '../../components/UI/ButtonWithNoBackground';
+// Components
+import DefaultButton from '../../components/UI/DefaultButton';
 import DefaultInput from '../../components/UI/DefaultInput';
 
+// Styling
 import mainStyles from '../../sass';
 import styleVariables from '../../style-variables';
 import authStyles from './sass';
+
+// Images
+import arriveLogo from '../../assets/arrive-logo.png';
+
 
 class AuthScreen extends Component {
 
@@ -46,16 +54,19 @@ class AuthScreen extends Component {
 
   render () {
     return (
-      <View style={mainStyles.screenMainContainer}>
-        <View style={authStyles.signButtonsContainer}>
-          <ButtonWithBackground
-            textColor={styleVariables.arriveBlue}
-          > SIGN UP </ButtonWithBackground>
-          <ButtonWithBackground
-            textColor={styleVariables.arriveBlue}
-          > SIGN IN </ButtonWithBackground>
+      <View style={[mainStyles.screenMainContainer, authStyles.authMainContainer]}>
+        <View style={authStyles.arriveLogoContainer}>
+          <ImageBackground source={arriveLogo} style={authStyles.arriveLogo}></ImageBackground>
         </View>
-        <View style={authStyles.test}>
+        <View style={authStyles.signButtonsContainer}>
+          <DefaultButton
+            textStyle={authStyles.signButtons__Text}
+          > SIGN UP </DefaultButton>
+          <DefaultButton
+            textStyle={authStyles.signButtons__Text}
+          > SIGN IN </DefaultButton>
+        </View>
+        <View>
           <Text>Email</Text>
           <DefaultInput
             value={this.state.controls.email.value}
@@ -73,10 +84,14 @@ class AuthScreen extends Component {
             valid={this.state.controls.password.valid}
             touched={this.state.controls.password.touched}
           />
+          <DefaultButton
+          > Reset Password </DefaultButton>
         </View>
-        <View style={[authStyles.test, authStyles.resetPasswordContainer]}>
-          <ButtonWithBackground
-          > Reset Password </ButtonWithBackground>
+        <View>
+          <DefaultButton
+            style={authStyles.signInButtonWithBackground}
+            textStyle={authStyles.signInButtonWithBackground__Text}
+          > SIGN IN </DefaultButton>
         </View>
       </View>
     )
