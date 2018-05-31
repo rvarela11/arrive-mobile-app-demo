@@ -1,5 +1,5 @@
 const initialState = {
-  location: 'Austin'
+  authMode: 'SIGN IN'
 }
 
 const reducer = (state = initialState, action) => {
