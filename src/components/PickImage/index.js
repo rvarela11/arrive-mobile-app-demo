@@ -5,33 +5,23 @@ import ImagePicker from 'react-native-image-picker';
 import styles from './styles';
 
 class PickImage extends Component {
-    state = {
-        pickedImage: null
-    }
 
     pickImageHandler = () => {
         ImagePicker.showImagePicker({
             title: "Pick an image"
-            // maxHeight: 600,
-            // maxWidth: 800
         }, res => {
             if (res.didCancel) {
                 console.log('User cancelled');
             } else if (res.error) {
                 console.log('error', res.error);
             } else {
-                console.log('res---------', res)
-                this.setState({
-                    pickedImage: { uri: res.uri }
-                });
                 this.props.handleImageSelection({ uri: res.uri, base64: res.data });
             }
-            
         });
     }
 
     render () {
-        if (!this.state.pickedImage) {
+        if (!this.props.pickedImage) {
             return (
                 <View style={styles.imagePickerContainer}>
                     <TouchableOpacity onPress={this.pickImageHandler}>
@@ -52,7 +42,7 @@ class PickImage extends Component {
             <View style={styles.imagePickerContainer}>
                 <TouchableOpacity onPress={this.pickImageHandler}>
                     <Image 
-                        source={this.state.pickedImage} 
+                        source={this.props.pickedImage} 
                         style={styles.documentImage} 
                     />
                 </TouchableOpacity>
