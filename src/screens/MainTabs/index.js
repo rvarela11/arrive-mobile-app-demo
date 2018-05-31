@@ -2,6 +2,8 @@ import { Navigation } from 'react-native-navigation';
 // import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import styleVariables from '../../style-variables';
+
 const startTabs = () => {
     Promise.all([
         Icon.getImageSource('home', 30),
@@ -29,7 +31,10 @@ const startTabs = () => {
                     title: 'Document',
                     icon: sources[2]
                 }
-            ]
+            ],
+            tabsStyle: {
+              tabBarSelectedButtonColor: styleVariables.arriveBlue
+            },
         })
     })
 }
