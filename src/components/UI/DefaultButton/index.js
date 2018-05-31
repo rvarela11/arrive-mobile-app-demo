@@ -1,6 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, TouchableNativeFeedback, View, Text, StyleSheet, Platform } from 'react-native';
 
+import styles from './styles.js';
+
 const defaultButton = props => {
   const content = (
     <View
@@ -32,17 +34,5 @@ const defaultButton = props => {
     </TouchableOpacity>
   )
 };
-
-const styles = StyleSheet.create({
-  button: {
-      padding: 10,
-      margin: 5,
-      borderRadius: 2,
-      alignItems: 'center'
-  },
-  disabled: {
-    backgroundColor: '#eee'
-  }
-})
 
 export default defaultButton;

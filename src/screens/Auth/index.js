@@ -13,9 +13,9 @@ import DefaultInput from '../../components/UI/DefaultInput';
 import startTabs from '../MainTabs';
 
 // Styling
-import mainStyles from '../../sass';
+import mainStyles from '../../styles';
 import styleVariables from '../../style-variables';
-import authStyles from './sass';
+import authStyles from './styles';
 
 // Images
 import arriveLogo from '../../assets/arrive-logo.png';
@@ -24,8 +24,19 @@ import arriveLogo from '../../assets/arrive-logo.png';
 class AuthScreen extends Component {
 
   state = {
+    authMode: 'SIGN IN',
     controls: {
+      fullName: {
+        value: '',
+        valid: true,
+        touched: false
+      },
       email: {
+        value: '',
+        valid: true,
+        touched: false
+      },
+      phone: {
         value: '',
         valid: true,
         touched: false
@@ -34,8 +45,17 @@ class AuthScreen extends Component {
         value: '',
         valid: true,
         touched: false
+      },
+      confirmPassword: {
+        value: '',
+        valid: true,
+        touched: false
       }
     }
+  }
+
+  switchAuthModelHandler = (authMode) => {
+    this.setState({authMode})
   }
 
   updateInputState = (key, value) => {
@@ -54,6 +74,66 @@ class AuthScreen extends Component {
   }
 
   render () {
+
+    let resetPasswordButton = (
+      <View>
+        <DefaultButton> Reset Password </DefaultButton>
+      </View>
+    )
+    let signButtonWithBackgroundText = 'SIGN IN';
+
+    // Setting additional inputs for SIGN UP
+    let fullNameInput = null;
+    let phoneInput = null;
+    let confirmPasswordInput = null;
+    let termsAndConditions = null;
+
+    if(this.state.authMode === 'SIGN UP') {
+      fullNameInput = (
+        <View>
+          <Text>Full Name</Text>
+          <DefaultInput
+            style={authStyles.inputWithBorder}
+            value={this.state.controls.fullName.value}
+            onChangeText={(value) => this.updateInputState('fullName', value)}
+            valid={this.state.controls.fullName.valid}
+            touched={this.state.controls.fullName.touched}
+          />
+        </View>
+      )
+      phoneInput = (
+        <View>
+          <Text>Phone</Text>
+          <DefaultInput
+            style={authStyles.inputWithBorder}
+            value={this.state.controls.phone.value}
+            onChangeText={(value) => this.updateInputState('phone', value)}
+            valid={this.state.controls.phone.valid}
+            touched={this.state.controls.phone.touched}
+          />
+        </View>
+      )
+      confirmPasswordInput = (
+        <View>
+          <Text>Confirm Password</Text>
+          <DefaultInput
+            style={authStyles.inputWithBorder}
+            value={this.state.controls.confirmPassword.value}
+            onChangeText={(value) => this.updateInputState('confirmPassword', value)}
+            valid={this.state.controls.confirmPassword.valid}
+            touched={this.state.controls.confirmPassword.touched}
+          />
+        </View>
+      )
+      termsAndConditions = (
+        <View style={authStyles.termsAndConditionsContainer}>
+          <Text>By creating an account you agree to our Terms of Service and Privacy Policy</Text>
+        </View>
+      )
+      resetPasswordButton = null;
+      signButtonWithBackgroundText = 'SIGN UP';
+    }
+
     return (
       <View style={[mainStyles.screenMainContainer, authStyles.authMainContainer]}>
         <View style={authStyles.arriveLogoContainer}>
@@ -62,14 +142,18 @@ class AuthScreen extends Component {
         <View style={authStyles.signButtonsContainer}>
           <DefaultButton
             textStyle={authStyles.signButtons__Text}
+            onPress={() => this.switchAuthModelHandler('SIGN UP')}
           > SIGN UP </DefaultButton>
           <DefaultButton
             textStyle={authStyles.signButtons__Text}
+            onPress={() => this.switchAuthModelHandler('SIGN IN')}
           > SIGN IN </DefaultButton>
         </View>
         <View>
+          {fullNameInput}
           <Text>Email</Text>
           <DefaultInput
+            style={authStyles.inputWithBorder}
             value={this.state.controls.email.value}
             onChangeText={(value) => this.updateInputState('email', value)}
             valid={this.state.controls.email.valid}
@@ -78,22 +162,25 @@ class AuthScreen extends Component {
             autoCorrect={false}
             keyboardType='email-address'
           />
+          {phoneInput}
           <Text>Password</Text>
           <DefaultInput
+            style={authStyles.inputWithBorder}
             value={this.state.controls.password.value}
             onChangeText={(value) => this.updateInputState('password', value)}
             valid={this.state.controls.password.valid}
             touched={this.state.controls.password.touched}
           />
-          <DefaultButton
-          > Reset Password </DefaultButton>
+          {confirmPasswordInput}
+          {resetPasswordButton}
         </View>
+        {termsAndConditions}
         <View>
           <DefaultButton
-            style={authStyles.signInButtonWithBackground}
-            textStyle={authStyles.signInButtonWithBackground__Text}
+            style={authStyles.signButtonWithBackground}
+            textStyle={authStyles.signButtonWithBackground__Text}
             onPress={startTabs}
-          > SIGN IN </DefaultButton>
+          > {signButtonWithBackgroundText} </DefaultButton>
         </View>
       </View>
     )

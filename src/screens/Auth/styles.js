@@ -15,15 +15,24 @@ const styles = StyleSheet.create({
   },
   signButtonsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    padding: 10,
   },
   signButtons__Text: {
     color: styleVariables.arriveBlue
   },
-  signInButtonWithBackground: {
+  inputWithBorder: {
+    borderColor: styleVariables.arriveBlue,
+    borderWidth: 1,
+  },
+  termsAndConditionsContainer: {
+    padding: 10,
+    alignItems: 'center'
+  },
+  signButtonWithBackground: {
     backgroundColor: styleVariables.arriveBlue
   },
-  signInButtonWithBackground__Text: {
+  signButtonWithBackground__Text: {
     color: '#fff',
     fontWeight: '800',
     fontSize: 16
