@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 // Components
 import DefaultButton from '../../components/UI/DefaultButton';
 import DefaultInput from '../../components/UI/DefaultInput';
+import startTabs from '../MainTabs';
 
 // Styling
 import mainStyles from '../../sass';
@@ -20,7 +21,7 @@ import authStyles from './sass';
 import arriveLogo from '../../assets/arrive-logo.png';
 
 
-class AuthScreen extends Component {
+class SignInScreen extends Component {
 
   state = {
     controls: {
@@ -91,6 +92,7 @@ class AuthScreen extends Component {
           <DefaultButton
             style={authStyles.signInButtonWithBackground}
             textStyle={authStyles.signInButtonWithBackground__Text}
+            onPress={startTabs}
           > SIGN IN </DefaultButton>
         </View>
       </View>
@@ -98,4 +100,4 @@ class AuthScreen extends Component {
   }
 }
 
-export default AuthScreen;
+export default SignInScreen;

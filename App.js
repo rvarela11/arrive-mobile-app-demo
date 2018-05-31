@@ -1,18 +1,24 @@
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 
-import AuthScreen from './src/screens/Auth';
 import configureStore from './src/store/configureStore';
+import Auth from './src/screens/Auth';
+import HomeScreen from './src/screens/Home';
+import MapScreen from './src/screens/Map';
+import DocumentScreen from './src/screens/Document';
 
 const store = configureStore();
 
 // Register Screens
-Navigation.registerComponent('arrivedemo.AuthScreen', () => AuthScreen, store, Provider);
+Navigation.registerComponent('arrivedemo.Auth', () => Auth, store, Provider);
+Navigation.registerComponent('arrivedemo.HomeScreen', () => HomeScreen, store, Provider);
+Navigation.registerComponent('arrivedemo.MapScreen', () => MapScreen, store, Provider);
+Navigation.registerComponent('arrivedemo.DocumentScreen', () => DocumentScreen, store, Provider);
 
 // Start App
 Navigation.startSingleScreenApp({
   screen: {
-    screen: 'arrivedemo.AuthScreen',
+    screen: 'arrivedemo.Auth',
     title: 'SIGN IN'
   }
 })
