@@ -21,7 +21,7 @@ import authStyles from './sass';
 import arriveLogo from '../../assets/arrive-logo.png';
 
 
-class SignInScreen extends Component {
+class AuthScreen extends Component {
 
   state = {
     controls: {
@@ -100,4 +100,4 @@ class SignInScreen extends Component {
   }
 }
 
-export default SignInScreen;
+export default AuthScreen;
