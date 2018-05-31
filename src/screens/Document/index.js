@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 
 import { submitDocument } from './actions';
 import PickImage from '../../components/PickImage';
-import DefaultInput from '../../components/DefaultInput';
+import DefaultInput from '../../components/UI/DefaultInput';
+import DefaultButton from '../../components/UI/DefaultButton';
 import styles from './styles';
 
 class DocumentScreen extends Component {
@@ -39,29 +40,37 @@ class DocumentScreen extends Component {
                 <View style={{ marginTop: 30, width: "80%", alignItems: "center" }}>
                     <DefaultInput 
                         placeholder="Title" 
-                        valid={true} 
-                        field="title"
-                        handleInputChange={this.handleInputChange}
+                        valid={true}
+                        onChangeText={(value) => {
+                            this.handleInputChange(value, 'title')}
+                        }
+                        style={styles.documentInput}
                     />
                     <DefaultInput 
                         placeholder="Document Type" 
-                        valid={true} 
-                        field="docType"
-                        handleInputChange={this.handleInputChange}
+                        valid={true}
+                        onChangeText={(value) => {
+                            this.handleInputChange(value, 'docType')}
+                        }
+                        style={styles.documentInput}
                     />
                     <DefaultInput 
                         placeholder="Notes" 
-                        valid={true} 
-                        field="notes"
-                        handleInputChange={this.handleInputChange}
+                        valid={true}
+                        onChangeText={(value) => {
+                            this.handleInputChange(value, 'notes')}
+                        }
+                        style={styles.documentInput}
                     />
                 </View>
-                <View style={styles.submitButton}>
-                <Button
-                    title="UPLOAD"
-                    color="white"
-                    onPress={this.handleSubmitDocument}
-                />
+                <View style={styles.submitButtonContainer}>
+                    <DefaultButton
+                        onPress={this.handleSubmitDocument}
+                        style={styles.submitButtonWithBackground}
+                        textStyle={styles.submitButtonWithBackground__Text}
+                    >
+                        SUBMIT
+                    </DefaultButton>
                 </View>
             </View>
         );
