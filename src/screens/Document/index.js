@@ -38,24 +38,24 @@ class DocumentScreen extends Component {
             <View style={styles.documentContainer}>
                 <PickImage handleImageSelection={this.handleImageSelection} />
                 <View style={{ marginTop: 30, width: "80%", alignItems: "center" }}>
-                    <DefaultInput 
-                        placeholder="Title" 
+                    <DefaultInput
+                        placeholder="Title"
                         valid={true}
                         onChangeText={(value) => {
                             this.handleInputChange(value, 'title')}
                         }
                         style={styles.documentInput}
                     />
-                    <DefaultInput 
-                        placeholder="Document Type" 
+                    <DefaultInput
+                        placeholder="Document Type"
                         valid={true}
                         onChangeText={(value) => {
                             this.handleInputChange(value, 'docType')}
                         }
                         style={styles.documentInput}
                     />
-                    <DefaultInput 
-                        placeholder="Notes" 
+                    <DefaultInput
+                        placeholder="Notes"
                         valid={true}
                         onChangeText={(value) => {
                             this.handleInputChange(value, 'notes')}
@@ -69,7 +69,7 @@ class DocumentScreen extends Component {
                         style={styles.submitButtonWithBackground}
                         textStyle={styles.submitButtonWithBackground__Text}
                     >
-                        SUBMIT
+                        UPLOAD
                     </DefaultButton>
                 </View>
             </View>
