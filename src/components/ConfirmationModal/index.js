@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableOpacity, View } from 'react-native';
-
 import styles from './styles';
 
 const ConfirmationModal = (props) => (
@@ -17,7 +16,7 @@ const ConfirmationModal = (props) => (
                 </View>
                 <View style={styles.confirmationButtonsContainer}>
                     <TouchableOpacity onPress={props.setModalVisible}>
-                        <Text style={styles.disagreeText}>Disagree</Text>
+                        <Text style={styles.confirmationButtonsContainer__disagreeText}>Disagree</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
@@ -25,12 +24,12 @@ const ConfirmationModal = (props) => (
                             props.handleCancel();
                         }}
                     >
-                        <Text style={styles.agreeText}>Agree</Text>
+                        <Text style={styles.confirmationButtonsContainer__agreeText}>Agree</Text>
                     </TouchableOpacity>
                 </View>
             </View>
         </View>
-    </Modal> 
+    </Modal>
 );
 
 export default ConfirmationModal;

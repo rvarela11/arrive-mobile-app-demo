@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5
     },
-    successModalTextContainer: { 
+    successModalTextContainer: {
         width: '70%'
     },
-    successModalText: {
+    successModalTextContainer__Text: {
         textAlign: 'center'
     },
     closeContainer: {
@@ -28,8 +28,9 @@ const styles = StyleSheet.create({
         backgroundColor: styleVariables.green,
         padding: 10
     },
-    closeText: {
-        color: '#fff'
+    closeContainer__Text: {
+        color: '#fff',
+        borderRadius: 2
     }
 });
 
