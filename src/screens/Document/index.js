@@ -73,8 +73,8 @@ class DocumentScreen extends Component {
                     pickedImage={this.state.document.docImage}
                 />
                 <View style={{ marginTop: 30, width: "80%", alignItems: "center" }}>
-                    <DefaultInput 
-                        placeholder="Title" 
+                    <DefaultInput
+                        placeholder="Title"
                         valid={true}
                         value={this.state.document.title}
                         onChangeText={(value) => {
@@ -82,8 +82,8 @@ class DocumentScreen extends Component {
                         }
                         style={styles.documentInput}
                     />
-                    <DefaultInput 
-                        placeholder="Document Type" 
+                    <DefaultInput
+                        placeholder="Document Type"
                         valid={true}
                         value={this.state.document.docType}
                         onChangeText={(value) => {
@@ -91,8 +91,8 @@ class DocumentScreen extends Component {
                         }
                         style={styles.documentInput}
                     />
-                    <DefaultInput 
-                        placeholder="Notes" 
+                    <DefaultInput
+                        placeholder="Notes"
                         valid={true}
                         value={this.state.document.notes}
                         onChangeText={(value) => {

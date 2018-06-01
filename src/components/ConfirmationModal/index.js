@@ -30,8 +30,7 @@ const ConfirmationModal = (props) => (
                 </View>
             </View>
         </View>
-    </Modal>
-    
+    </Modal> 
 );
 
 export default ConfirmationModal;

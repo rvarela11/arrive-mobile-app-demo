@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableHighlight, View } from 'react-native';
+import { Modal, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
 
@@ -20,9 +20,9 @@ const SuccessModal = (props) => (
                     <Text style={styles.successModalText}>Paperwork Uploaded Successfully</Text>
                 </View>
                 <View style={styles.closeContainer}>
-                    <TouchableHighlight onPress={props.setModalVisible}>
+                    <TouchableOpacity onPress={props.setModalVisible}>
                         <Text style={styles.closeText}>Close</Text>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>

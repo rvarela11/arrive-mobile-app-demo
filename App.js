@@ -18,7 +18,6 @@ Navigation.registerComponent('arrivedemo.DocumentScreen', () => DocumentScreen, 
 // Start App
 Navigation.startSingleScreenApp({
   screen: {
-    screen: 'arrivedemo.Auth',
-    title: 'SIGN IN'
+    screen: 'arrivedemo.Auth'
   }
 })
