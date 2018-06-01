@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 5
     },
-    confirmationModalTextContainer: { 
+    confirmationModalTextContainer: {
         width: '70%',
         marginLeft: 50,
         marginTop: 30
@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around'
     },
-    disagreeText: {
+    confirmationButtonsContainer__disagreeText: {
         color: styleVariables.darkGrey
     },
-    agreeText: {
+    confirmationButtonsContainer__agreeText: {
         color: styleVariables.arriveBlue
     }
 });

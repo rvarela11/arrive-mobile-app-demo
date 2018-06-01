@@ -32,8 +32,7 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     cancelButtonWithBackground: {
-        backgroundColor: '#cccccc',
-        // marginTop: 20
+        backgroundColor: '#cccccc'
     },
     cancelButtonWithBackground__Text: {
         color: '#fff',
