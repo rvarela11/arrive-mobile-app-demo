@@ -14,6 +14,7 @@
 
 /ios/build
 /ios/build/*
+/ios/.DS_Store
 
 /ios/Pods
 /ios/arrivedemo.xcworkspace
