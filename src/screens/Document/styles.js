@@ -26,6 +26,19 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: '800',
         fontSize: 16
+    },
+    cancelButtonContainer: {
+        width: "82.5%",
+        marginTop: 10
+    },
+    cancelButtonWithBackground: {
+        backgroundColor: '#cccccc',
+        // marginTop: 20
+    },
+    cancelButtonWithBackground__Text: {
+        color: '#fff',
+        fontWeight: '800',
+        fontSize: 16
     }
 });
 

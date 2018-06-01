@@ -7,40 +7,76 @@ import { submitDocument } from './actions';
 import PickImage from '../../components/PickImage';
 import DefaultInput from '../../components/UI/DefaultInput';
 import DefaultButton from '../../components/UI/DefaultButton';
+import SuccessModal from '../../components/SuccessModal';
+import ConfirmationModal from '../../components/ConfirmationModal';
 import styles from './styles';
 
 class DocumentScreen extends Component {
     state = {
-        docImage: null,
-        title: '',
-        docType: '',
-        notes: ''
+        document: {
+            docImage: null,
+            title: '',
+            docType: '',
+            notes: ''
+        },
+        successModalVisible: false,
+        confirmationModalVisible: false
     }
 
     handleInputChange = (value, field) => {
         this.setState({
-            [field]: value
+            document: {
+                ...this.state.document,
+                [field]: value
+            }
         });
     }
 
     handleImageSelection = (pickedImage) => {
         this.setState({
-            docImage: pickedImage
+            document: {
+                ...this.state.document,
+                docImage: pickedImage
+            }
         });
     }
 
     handleSubmitDocument = () => {
-        this.props.submitDocument(this.state);
+        this.props.submitDocument(this.state.document); 
+        this.setModalVisible('successModalVisible'); 
+    }
+
+    handleCancel = () => {
+        this.setState({
+            document: {
+                docImage: null,
+                title: '',
+                docType: '',
+                notes: ''
+            }
+        });
+    }
+
+    setModalVisible = (modalType) => {
+        this.setState(prevState => {
+            return {
+                [modalType]: !prevState[modalType]
+            };
+        });
     }
 
     render () {
         return (
             <View style={styles.documentContainer}>
-                <PickImage handleImageSelection={this.handleImageSelection} />
+                <PickImage
+                    handleImageSelection={this.handleImageSelection}
+                    pickedImage={this.state.document.docImage}
+                />
                 <View style={{ marginTop: 30, width: "80%", alignItems: "center" }}>
                     <DefaultInput
                         placeholder="Title"
                         valid={true}
+                        value={this.state.document.title}
                         onChangeText={(value) => {
                             this.handleInputChange(value, 'title')}
                         }
@@ -49,6 +85,7 @@ class DocumentScreen extends Component {
                     <DefaultInput
                         placeholder="Document Type"
                         valid={true}
+                        value={this.state.document.docType}
                         onChangeText={(value) => {
                             this.handleInputChange(value, 'docType')}
                         }
@@ -57,6 +94,7 @@ class DocumentScreen extends Component {
                     <DefaultInput
                         placeholder="Notes"
                         valid={true}
+                        value={this.state.document.notes}
                         onChangeText={(value) => {
                             this.handleInputChange(value, 'notes')}
                         }
@@ -72,6 +110,24 @@ class DocumentScreen extends Component {
                         UPLOAD
                     </DefaultButton>
                 </View>
+                <View style={styles.cancelButtonContainer}>
+                    <DefaultButton
+                        onPress={() => this.setModalVisible('confirmationModalVisible')}
+                        style={styles.cancelButtonWithBackground}
+                        textStyle={styles.cancelButtonWithBackground__Text}
+                    >
+                        CANCEL
+                    </DefaultButton>
+                </View>
+                <SuccessModal
+                    modalVisible={this.state.successModalVisible}
+                    setModalVisible={() => this.setModalVisible('successModalVisible')}
+                />
+                <ConfirmationModal
+                    handleCancel={this.handleCancel}
+                    modalVisible={this.state.confirmationModalVisible}
+                    setModalVisible={() => this.setModalVisible('confirmationModalVisible')}
+                />
             </View>
         );
     }
