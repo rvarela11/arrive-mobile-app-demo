@@ -14,14 +14,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: '#cccccc',
-        borderWidth: 1,
-        shadowColor: '#cccccc',
-        shadowOffset: { width: 2, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        paddingTop: 10,
-        paddingBottom: 10,
         width: '100%',
         height: '100%'
     }
