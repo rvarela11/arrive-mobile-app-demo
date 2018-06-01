@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Button, Image, TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-picker';
+import { Card } from 'react-native-elements'
+
 import styles from './styles';
 
 class PickImage extends Component {
@@ -23,27 +25,27 @@ class PickImage extends Component {
     render () {
         if (!this.props.pickedImage) {
             return (
-                <View style={styles.imagePickerContainer}>
-                    <TouchableOpacity onPress={this.pickImageHandler}>
-                        <View style={styles.takePhotoButton}>
-                            <Icon 
-                                size={36}
-                                name="camera"
-                                color="#66E8F7"
-                            />
-                            <Text>TAKE PHOTO</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+                <Card containerStyle={styles.imagePickerContainer}>
+                  <TouchableOpacity onPress={this.pickImageHandler}>
+                       <View style={styles.takePhotoButton}>
+                           <Icon
+                               size={36}
+                               name="camera"
+                               color="#66E8F7"
+                           />
+                           <Text>TAKE PHOTO</Text>
+                       </View>
+                  </TouchableOpacity>
+                </Card>
             );
         }
 
         return (
             <View style={styles.imagePickerContainer}>
                 <TouchableOpacity onPress={this.pickImageHandler}>
-                    <Image 
-                        source={this.props.pickedImage} 
-                        style={styles.documentImage} 
+                    <Image
+                        source={this.props.pickedImage}
+                        style={styles.documentImage}
                     />
                 </TouchableOpacity>
             </View>
