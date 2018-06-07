@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 // Components
 import DefaultButton from '../../components/UI/DefaultButton';
 import DefaultInput from '../../components/UI/DefaultInput';
+import ArriveLogoHeader from '../../components/ArriveLogoHeader';
+import SignButtonsControl from '../../components/SignButtonsControl';
 import startTabs from '../MainTabs';
 
 // Styling
@@ -136,19 +138,10 @@ class AuthScreen extends Component {
 
     return (
       <View style={[mainStyles.screenMainContainer, authStyles.authMainContainer]}>
-        <View style={authStyles.arriveLogoContainer}>
-          <ImageBackground source={arriveLogo} style={authStyles.arriveLogo}></ImageBackground>
-        </View>
-        <View style={authStyles.signButtonsContainer}>
-          <DefaultButton
-            textStyle={authStyles.signButtons__Text}
-            onPress={() => this.switchAuthModelHandler('SIGN UP')}
-          > SIGN UP </DefaultButton>
-          <DefaultButton
-            textStyle={authStyles.signButtons__Text}
-            onPress={() => this.switchAuthModelHandler('SIGN IN')}
-          > SIGN IN </DefaultButton>
-        </View>
+        <ArriveLogoHeader />
+
+        <SignButtonsControl switchAuthModelHandler={this.switchAuthModelHandler} />
+
         <View>
           {fullNameInput}
           <Text>Email</Text>

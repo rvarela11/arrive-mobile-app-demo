@@ -5,22 +5,14 @@ const styles = StyleSheet.create({
   authMainContainer: {
     justifyContent: 'space-between'
   },
-  arriveLogoContainer: {
-    width: "100%",
-    height: "10%"
-  },
-  arriveLogo: {
-    width: "100%",
-    height: "100%"
-  },
-  signButtonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
-  },
-  signButtons__Text: {
-    color: styleVariables.arriveBlue
-  },
+  // signButtonsContainer: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   padding: 10,
+  // },
+  // signButtons__Text: {
+  //   color: styleVariables.arriveBlue
+  // },
   inputWithBorder: {
     borderColor: styleVariables.arriveBlue,
     borderWidth: 1,
