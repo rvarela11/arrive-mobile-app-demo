@@ -5,14 +5,6 @@ const styles = StyleSheet.create({
   authMainContainer: {
     justifyContent: 'space-between'
   },
-  // signButtonsContainer: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   padding: 10,
-  // },
-  // signButtons__Text: {
-  //   color: styleVariables.arriveBlue
-  // },
   inputWithBorder: {
     borderColor: styleVariables.arriveBlue,
     borderWidth: 1,
