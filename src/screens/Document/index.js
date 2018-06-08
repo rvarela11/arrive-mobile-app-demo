@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TouchableOpacity, Button, ActionSheetIOS } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -9,6 +9,9 @@ import DefaultInput from '../../components/UI/DefaultInput';
 import DefaultButton from '../../components/UI/DefaultButton';
 import SuccessModal from '../../components/SuccessModal';
 import ConfirmationModal from '../../components/ConfirmationModal';
+
+// Styling
+import mainStyles from '../../styles';
 import styles from './styles';
 
 class DocumentScreen extends Component {
@@ -16,7 +19,7 @@ class DocumentScreen extends Component {
         document: {
             docImage: null,
             title: '',
-            docType: '',
+            docType: 'Document Type',
             notes: ''
         },
         successModalVisible: false,
@@ -24,12 +27,36 @@ class DocumentScreen extends Component {
     }
 
     handleInputChange = (value, field) => {
+        if (field === 'docType') {
+          this.handleActionSheetIOS(field);
+        }
         this.setState({
             document: {
                 ...this.state.document,
                 [field]: value
             }
         });
+    }
+
+    handleActionSheetIOS = (field) => {
+      const DOCTYPE_ACTIONSHEET_BUTTONS = [
+        'Weight Ticket',
+        'PPW',
+        'BOL',
+        'POD'
+      ]
+
+      ActionSheetIOS.showActionSheetWithOptions({
+        options: DOCTYPE_ACTIONSHEET_BUTTONS,
+      },
+      (buttonIndex) => {
+        this.setState({
+          document: {
+              ...this.state.document,
+              [field]: DOCTYPE_ACTIONSHEET_BUTTONS[buttonIndex]
+          }
+        });
+      });
     }
 
     handleImageSelection = (pickedImage) => {
@@ -42,8 +69,8 @@ class DocumentScreen extends Component {
     }
 
     handleSubmitDocument = () => {
-        this.props.submitDocument(this.state.document); 
-        this.setModalVisible('successModalVisible'); 
+        this.props.submitDocument(this.state.document);
+        this.setModalVisible('successModalVisible');
     }
 
     handleCancel = () => {
@@ -51,7 +78,7 @@ class DocumentScreen extends Component {
             document: {
                 docImage: null,
                 title: '',
-                docType: '',
+                docType: 'Document Type',
                 notes: ''
             }
         });
@@ -66,13 +93,14 @@ class DocumentScreen extends Component {
     }
 
     render () {
+        const docType = this.state.document.docType;
         return (
-            <View style={styles.documentContainer}>
+            <View style={[mainStyles.screenMainContainer, styles.documentContainer]}>
                 <PickImage
                     handleImageSelection={this.handleImageSelection}
                     pickedImage={this.state.document.docImage}
                 />
-                <View style={{ marginTop: 30, width: "80%", alignItems: "center" }}>
+                <View style={styles.documentInputContainer}>
                     <DefaultInput
                         placeholder="Title"
                         valid={true}
@@ -82,15 +110,11 @@ class DocumentScreen extends Component {
                         }
                         style={styles.documentInput}
                     />
-                    <DefaultInput
-                        placeholder="Document Type"
-                        valid={true}
-                        value={this.state.document.docType}
-                        onChangeText={(value) => {
-                            this.handleInputChange(value, 'docType')}
-                        }
-                        style={styles.documentInput}
-                    />
+                    <DefaultButton
+                        onPress={() => this.handleInputChange(null, 'docType')}
+                        style={styles.docTypeContainer}
+                        textStyle={(docType === 'Document Type') ? styles.docTypeContainer__Text : null}
+                    > {docType}</DefaultButton>
                     <DefaultInput
                         placeholder="Notes"
                         valid={true}
