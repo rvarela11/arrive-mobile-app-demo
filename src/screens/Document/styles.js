@@ -3,9 +3,12 @@ import styleVariables from '../../style-variables';
 
 const styles = StyleSheet.create({
     documentContainer: {
-        flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    documentInputContainer: {
+      width: '100%',
+      marginTop: 20
     },
     documentInput: {
         borderWidth: 1,
@@ -14,13 +17,30 @@ const styles = StyleSheet.create({
         borderLeftColor: "white",
         borderRightColor: "white"
     },
+    docTypeContainer: {
+      borderWidth: 1,
+      borderBottomColor: styleVariables.arriveBlue,
+      borderTopColor: "white",
+      borderLeftColor: "white",
+      borderRightColor: "white",
+      width: '100%',
+      backgroundColor: '#fff',
+      padding: 1,
+      marginTop: 8,
+      marginLeft: 0,
+      marginBottom: 0,
+      marginRight: 0,
+      alignItems: 'flex-start'
+    },
+    docTypeContainer__Text: {
+      color: '#C7C7CD'
+    },
     submitButtonContainer: {
-        width: "82.5%",
+        width: "100%",
         marginTop: 20
     },
     submitButtonWithBackground: {
-        backgroundColor: styleVariables.arriveBlue,
-        marginTop: 20
+        backgroundColor: styleVariables.arriveBlue
     },
     submitButtonWithBackground__Text: {
         color: '#fff',
@@ -28,7 +48,7 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     cancelButtonContainer: {
-        width: "82.5%",
+        width: "100%",
         marginTop: 10
     },
     cancelButtonWithBackground: {

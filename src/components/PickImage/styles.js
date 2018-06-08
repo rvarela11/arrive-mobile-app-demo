@@ -6,9 +6,8 @@ const styles = StyleSheet.create({
         height: "100%"
     },
     imagePickerContainer: {
-        width: "80%",
+        width: "100%",
         height: 200,
-        marginTop: 20
     },
     takePhotoButton: {
         flexDirection: 'column',
