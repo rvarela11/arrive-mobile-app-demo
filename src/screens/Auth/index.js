@@ -23,7 +23,7 @@ import styles from './styles';
 import arriveLogo from '../../assets/arrive-logo.png';
 
 // Utility
-import { validate, isSignUpFormValidate } from '../../utility/validation';
+import { validate } from '../../utility/validation';
 
 class AuthScreen extends Component {
 
@@ -65,14 +65,55 @@ class AuthScreen extends Component {
         value: ''
       }
     },
-    signUpFormValid: false
+    isSignUpFormValid: false
   }
 
+  // Setting the authMode to know which TextInput to display
   switchAuthModelHandler = (authMode) => {
-    this.setState({authMode})
+    this.setState({authMode});
+    // Cleans state since the SIGN UP and SIGN IN are sharing inputs
+    this.setState({
+      controls: {
+        fullName: {
+          hasOnBlur: false,
+          valid: true,
+          value: ''
+        },
+        email: {
+          hasOnBlur: false,
+          valid: false,
+          validationRules: {
+            isEmail: true
+          },
+          value: ''
+        },
+        phone: {
+          hasOnBlur: false,
+          valid: true,
+          value: ''
+        },
+        password: {
+          hasOnBlur: false,
+          valid: false,
+          validationRules: {
+            minLength: 6
+          },
+          value: ''
+        },
+        confirmPassword: {
+          hasOnBlur: false,
+          valid: false,
+          validationRules: {
+            equalTo: 'password'
+          },
+          value: ''
+        }
+      }
+    });
   }
 
   updateInputState = (key, value) => {
+    // This if statment removes the error if the validationRules are met
     if(this.state.controls[key].hasOnBlur) {
       this.validateInputState(key, value);
     }
@@ -132,16 +173,23 @@ class AuthScreen extends Component {
   }
 
   checkForSignUpValidation = () => {
-    const isFullNameValid = this.state.controls['fullName'].valid;
-    const isEmailValid = this.state.controls['email'].valid;
-    const isPhoneValid = this.state.controls['phone'].valid;
-    const isPasswordValid = this.state.controls['password'].valid;
-    const isConfirmPasswordValid = this.state.controls['confirmPassword'].valid;
 
-    if (isFullNameValid && isEmailValid && isPhoneValid && isPasswordValid && isConfirmPasswordValid) {
-      this.setState({signUpFormValid: true})
-    } else {
-      this.setState({signUpFormValid: false})
+    let isSignUpFormValid = {
+      true: 0,
+      false: 0
+    };
+
+    for (let key in this.state.controls) {
+      // Setting the number of times true or false is in the this.state.controls
+      // This number will setState for isSignUpFormValid and set the disabled SIGN UP button
+      isSignUpFormValid[this.state.controls[key].valid]++
+
+      if (isSignUpFormValid.false > 0) {
+        this.setState({isSignUpFormValid: false})
+      } else {
+        this.setState({isSignUpFormValid: true})
+      }
+
     }
   }
 
@@ -245,7 +293,7 @@ class AuthScreen extends Component {
             style={styles.signButtonWithBackground}
             textStyle={styles.signButtonWithBackground__Text}
             onPress={startTabs}
-            disabled={(this.state.authMode === 'SIGN UP') ? !this.state.signUpFormValid : false}
+            disabled={(this.state.authMode === 'SIGN UP') ? !this.state.isSignUpFormValid : false}
           > {signButtonWithBackgroundText} </DefaultButton>
         </View>
       </View>

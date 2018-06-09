@@ -17,15 +17,6 @@ export const validate = (value, rules, connectedValue) => {
   return isValid;
 }
 
-// export const isSignUpFormValidate = (key, valid) => {
-//   let isValid = false;
-//   if (valid) {
-//     isValid = true;
-//   }
-//   console.log(isValid);
-//   return isValid;
-// }
-
 const emailValidator = value => {
   return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(value);
 }
