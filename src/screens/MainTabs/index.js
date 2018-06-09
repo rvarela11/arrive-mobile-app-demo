@@ -1,7 +1,8 @@
+// Vendors
 import { Navigation } from 'react-native-navigation';
-// import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+// Styling
 import styleVariables from '../../style-variables';
 
 const startTabs = () => {

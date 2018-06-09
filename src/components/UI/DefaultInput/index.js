@@ -9,7 +9,7 @@ const defaultInput = props => (
         style={[
             styles.input,
             props.style,
-            !props.valid && props.touched ? styles.invalid : null
+            !props.valid && props.hasOnBlur ? styles.invalid : null
         ]}
         underlineColorAndroid='transparent'
     />

@@ -1,5 +1,8 @@
-import { View, Text } from 'react-native';
+// Vendors
 import React from 'react';
+import {
+  View, Text
+} from 'react-native';
 
 const MapScreen = () => (
     <View>
