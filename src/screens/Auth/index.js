@@ -174,23 +174,16 @@ class AuthScreen extends Component {
 
   checkForSignUpValidation = () => {
 
-    let isSignUpFormValid = {
-      true: 0,
-      false: 0
-    };
-
+    // Get all the valid values from this.state.controls and stop at the first false
     for (let key in this.state.controls) {
-      // Setting the number of times true or false is in the this.state.controls
-      // This number will setState for isSignUpFormValid and set the disabled SIGN UP button
-      isSignUpFormValid[this.state.controls[key].valid]++
-
-      if (isSignUpFormValid.false > 0) {
-        this.setState({isSignUpFormValid: false})
+      if (!this.state.controls[key].valid) {
+        this.setState({isSignUpFormValid: false});
+        return;
       } else {
         this.setState({isSignUpFormValid: true})
       }
-
     }
+
   }
 
   render () {
