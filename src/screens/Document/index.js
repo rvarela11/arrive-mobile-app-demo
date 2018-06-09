@@ -1,9 +1,19 @@
-import { View, Text, TouchableOpacity, Button, ActionSheetIOS } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+// Vendors
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Button,
+  ActionSheetIOS
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+// Actions
 import { submitDocument } from './actions';
+
+// Components
 import PickImage from '../../components/PickImage';
 import DefaultInput from '../../components/UI/DefaultInput';
 import DefaultButton from '../../components/UI/DefaultButton';
