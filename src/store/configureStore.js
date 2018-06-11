@@ -2,9 +2,11 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import locationReducer from '../screens/Auth/reducers';
+import homeDocumentsReducer from '../screens/Home/reducers';
 
 const rootReducer = combineReducers({
-    location: locationReducer
+    location: locationReducer,
+    homeDocuments: homeDocumentsReducer
 });
 
 let composeEnhancers = compose;

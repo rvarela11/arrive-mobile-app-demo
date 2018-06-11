@@ -1,17 +1,29 @@
 // Vendors
 import React from 'react';
 import {
-  View,
-  Text
+    View,
+    Text,
+    ImageBackground
 } from 'react-native';
-import { Card } from 'react-native-elements'
+import { Card } from 'react-native-elements';
+import { connect } from 'react-redux';
 
-const HomeScreen = () => (
+const HomeScreen = props => (
     <View>
-        <Card>
-          <Text>Home</Text>
-        </Card>
+        {props.homeDocuments.map((document) => {
+            return (
+                <Card key={document.title}>
+                    <Text>{document.title}</Text>
+                    <Text>{document.docType}</Text>
+                    <Text>{document.notes}</Text>
+                </Card>
+            );
+        })}
     </View>
 );
 
-export default HomeScreen;
+const mapStateToProps = state => ({
+    homeDocuments: state.homeDocuments
+})
+
+export default connect(mapStateToProps)(HomeScreen);

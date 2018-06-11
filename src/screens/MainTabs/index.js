@@ -21,12 +21,6 @@ const startTabs = () => {
                     icon: sources[0]
                 },
                 {
-                    screen: 'arrivedemo.MapScreen',
-                    label: 'Map',
-                    title: 'Map',
-                    icon: sources[1]
-                },
-                {
                     screen: 'arrivedemo.DocumentScreen',
                     label: 'Document',
                     title: 'Document',

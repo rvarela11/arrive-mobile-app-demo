@@ -2,7 +2,8 @@ export const submitDocument = (documentInfo) => {
     return (dispatch) => {
         console.log('documentinfo', documentInfo)
         dispatch({
-            type: 'SUBMIT_DOCUMENT'
+            type: 'SUBMIT_DOCUMENT',
+            payload: documentInfo
         });
     }
 }
