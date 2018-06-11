@@ -28,7 +28,7 @@ import { validate } from '../../utility/validation';
 class AuthScreen extends Component {
 
   state = {
-    authMode: 'SIGN IN',
+    authMode: 'SIGN UP',
     controls: {
       fullName: {
         hasOnBlur: false,
@@ -173,7 +173,6 @@ class AuthScreen extends Component {
   }
 
   checkForSignUpValidation = () => {
-
     // Get all the valid values from this.state.controls and stop at the first false
     for (let key in this.state.controls) {
       if (!this.state.controls[key].valid) {
@@ -187,6 +186,10 @@ class AuthScreen extends Component {
   }
 
   render () {
+
+    const {
+      controls
+    } = this.state
 
     let resetPasswordButton = (
       <View>
@@ -207,10 +210,10 @@ class AuthScreen extends Component {
           <Text>Full Name</Text>
           <DefaultInput
             style={styles.inputWithBorder}
-            value={this.state.controls.fullName.value}
+            value={controls.fullName.value}
             onChangeText={(value) => this.updateInputState('fullName', value)}
-            valid={this.state.controls.fullName.valid}
-            hasOnBlur={this.state.controls.fullName.hasOnBlur}
+            valid={controls.fullName.valid}
+            hasOnBlur={controls.fullName.hasOnBlur}
           />
         </View>
       )
@@ -219,22 +222,25 @@ class AuthScreen extends Component {
           <Text>Phone</Text>
           <DefaultInput
             style={styles.inputWithBorder}
-            value={this.state.controls.phone.value}
+            value={controls.phone.value}
             onChangeText={(value) => this.updateInputState('phone', value)}
-            valid={this.state.controls.phone.valid}
-            hasOnBlur={this.state.controls.phone.hasOnBlur}
+            valid={controls.phone.valid}
+            hasOnBlur={controls.phone.hasOnBlur}
           />
         </View>
       )
       confirmPasswordInput = (
         <View>
-          <Text>Confirm Password</Text>
+          <View style={styles.inputLabelContainer}>
+            <Text>Confirm Password</Text>
+            <Text style={(!controls.confirmPassword.valid && controls.confirmPassword.hasOnBlur) ? styles.showErrorMessage : styles.hideErrorMessage}>Passwords do not match</Text>
+          </View>
           <DefaultInput
             style={styles.inputWithBorder}
-            value={this.state.controls.confirmPassword.value}
+            value={controls.confirmPassword.value}
             onChangeText={(value) => this.validateInputState('confirmPassword', value)}
-            valid={this.state.controls.confirmPassword.valid}
-            hasOnBlur={this.state.controls.confirmPassword.hasOnBlur}
+            valid={controls.confirmPassword.valid}
+            hasOnBlur={controls.confirmPassword.hasOnBlur}
           />
         </View>
       )
@@ -255,27 +261,33 @@ class AuthScreen extends Component {
 
         <View>
           {fullNameInput}
-          <Text>Email</Text>
+          <View style={styles.inputLabelContainer}>
+            <Text>Email</Text>
+            <Text style={(!controls.email.valid && controls.email.hasOnBlur) ? styles.showErrorMessage : styles.hideErrorMessage}>Invalid Email</Text>
+          </View>
           <DefaultInput
             style={styles.inputWithBorder}
-            value={this.state.controls.email.value}
+            value={controls.email.value}
             onChangeText={(value) => this.updateInputState('email', value)}
             onBlur={(event) => this.validateInputState('email', event.nativeEvent.text)}
-            valid={this.state.controls.email.valid}
-            hasOnBlur={this.state.controls.email.hasOnBlur}
+            valid={controls.email.valid}
+            hasOnBlur={controls.email.hasOnBlur}
             autoCapitalize='none'
             autoCorrect={false}
             keyboardType='email-address'
           />
           {phoneInput}
-          <Text>Password</Text>
+          <View style={styles.inputLabelContainer}>
+            <Text>Password</Text>
+            <Text style={(!controls.password.valid && controls.password.hasOnBlur) ? styles.showErrorMessage : styles.hideErrorMessage}>Must be 6 characters long</Text>
+          </View>
           <DefaultInput
             style={styles.inputWithBorder}
-            value={this.state.controls.password.value}
+            value={controls.password.value}
             onChangeText={(value) => this.updateInputState('password', value)}
             onBlur={(event) => this.validateInputState('password', event.nativeEvent.text)}
-            valid={this.state.controls.password.valid}
-            hasOnBlur={this.state.controls.password.hasOnBlur}
+            valid={controls.password.valid}
+            hasOnBlur={controls.password.hasOnBlur}
           />
           {confirmPasswordInput}
           {resetPasswordButton}
