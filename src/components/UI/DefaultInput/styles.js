@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 5,
     marginTop: 8,
-    marginBottom: 8,
+    marginBottom: 8
   },
   invalid: {
     backgroundColor: '#f9c0c0',

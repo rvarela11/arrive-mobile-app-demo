@@ -20,6 +20,17 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '800',
     fontSize: 16
+  },
+  inputLabelContainer: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  showErrorMessage: {
+    color: 'red',
+    marginLeft: 8
+  },
+  hideErrorMessage: {
+    display: 'none'
   }
 });
 
