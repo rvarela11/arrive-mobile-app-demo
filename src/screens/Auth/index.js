@@ -28,7 +28,7 @@ import { validate } from '../../utility/validation';
 class AuthScreen extends Component {
 
   state = {
-    authMode: 'SIGN UP',
+    authMode: 'SIGN IN',
     controls: {
       fullName: {
         hasOnBlur: false,
