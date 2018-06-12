@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
+import LoadListItem from '../../components/LoadListItem';
 
 // Components
 import DefaultToast from '../../components/UI/DefaultToast';
@@ -76,11 +77,11 @@ class HomeScreen extends Component {
             </View>
             {this.props.homeDocuments.map((document) => {
                 return (
-                    <Card key={document.title}>
-                        <Text>{document.title}</Text>
-                        <Text>{document.docType}</Text>
-                        <Text>{document.notes}</Text>
-                    </Card>
+                    <LoadListItem
+                        key={document.title}
+                        document={document}
+                        navigator={this.props.navigator}
+                    />
                 );
             })}
         </View>
