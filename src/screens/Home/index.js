@@ -7,16 +7,13 @@ import {
 } from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
+import LoadCard from '../../components/LoadCard';
 
 const HomeScreen = props => (
     <View>
         {props.homeDocuments.map((document) => {
             return (
-                <Card key={document.title}>
-                    <Text>{document.title}</Text>
-                    <Text>{document.docType}</Text>
-                    <Text>{document.notes}</Text>
-                </Card>
+                <LoadCard key={document.title} document={document} />
             );
         })}
     </View>

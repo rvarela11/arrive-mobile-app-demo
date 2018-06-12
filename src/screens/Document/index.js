@@ -80,7 +80,6 @@ class DocumentScreen extends Component {
 
     handleSubmitDocument = () => {
         this.props.submitDocument(this.state.document);
-        this.setModalVisible('successModalVisible');
     }
 
     handleCancel = () => {
@@ -153,10 +152,6 @@ class DocumentScreen extends Component {
                         CANCEL
                     </DefaultButton>
                 </View>
-                <SuccessModal
-                    modalVisible={this.state.successModalVisible}
-                    setModalVisible={() => this.setModalVisible('successModalVisible')}
-                />
                 <ConfirmationModal
                     handleCancel={this.handleCancel}
                     modalVisible={this.state.confirmationModalVisible}
