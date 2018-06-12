@@ -17,7 +17,6 @@ import { submitDocument } from './actions';
 import PickImage from '../../components/PickImage';
 import DefaultInput from '../../components/UI/DefaultInput';
 import DefaultButton from '../../components/UI/DefaultButton';
-import SuccessModal from '../../components/SuccessModal';
 import ConfirmationModal from '../../components/ConfirmationModal';
 
 // Styling
@@ -80,9 +79,14 @@ class DocumentScreen extends Component {
 
     handleSubmitDocument = () => {
         this.props.submitDocument(this.state.document);
+        this.clearFields();
+        this.props.navigator.push({
+            screen: "arrivedemo.HomeScreen",
+            title: 'Home'
+        });
     }
 
-    handleCancel = () => {
+    clearFields = () => {
         this.setState({
             document: {
                 docImage: null,
@@ -153,7 +157,7 @@ class DocumentScreen extends Component {
                     </DefaultButton>
                 </View>
                 <ConfirmationModal
-                    handleCancel={this.handleCancel}
+                    handleCancel={this.clearFields}
                     modalVisible={this.state.confirmationModalVisible}
                     setModalVisible={() => this.setModalVisible('confirmationModalVisible')}
                 />
