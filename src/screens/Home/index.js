@@ -75,12 +75,12 @@ class HomeScreen extends Component {
                 valid={isToastSuccessful}
               >Upload {this.state.toastStatus}</DefaultToast>
             </View>
-            {props.homeDocuments.map((document) => {
+            {this.props.homeDocuments.map((document) => {
                 return (
                     <LoadListItem
                         key={document.title}
                         document={document}
-                        navigator={props.navigator}
+                        navigator={this.props.navigator}
                     />
                 );
             })}
