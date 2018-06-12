@@ -17,30 +17,63 @@ import styles from './styles';
 class HomeScreen extends Component {
 
   state = {
-    isToastSuccessful: true,
+    homeDocuments: 0,
+    isToastSuccessful: false,
     showToast: false,
-    homeDocuments: 0
+    toastStatus: ''
+  }
+
+  componentDidMount() {
+    this.showToast();
   }
 
   showToast = () => {
-    if(this.props.homeDocuments.length === this.state.homeDocuments) {
-      return 'Upload Error';
-
+    // Initial Load
+    if (this.props.homeDocuments.length === 0) {
+      return;
     }
-    return 'Upload Successful';
+    // Successful Load
+    else if (this.props.homeDocuments.length > this.state.homeDocuments) {
+      this.setState({
+        ...this.state,
+        homeDocuments: this.props.homeDocuments.length,
+        isToastSuccessful: true,
+        showToast: true,
+        toastStatus: 'Successful'
+      }, this.hideToast)
+    }
+    // Failed Load
+    else if (this.props.homeDocuments.length === this.state.homeDocuments) {
+      this.setState({
+        ...this.state,
+        homeDocuments: this.props.homeDocuments.length,
+        isToastSuccessful: false,
+        showToast: true,
+        toastStatus: 'Error'
+      }, this.hideToast)
+    }
+  }
 
+  hideToast = () => {
+    setTimeout(() => {
+      this.setState({
+        ...this.state,
+        showToast: false
+      })
+    }, 3000);
   }
 
   render () {
-    const { isToastSuccessful } = this.state;
+    const { isToastSuccessful, showToast } = this.state;
+    
     return (
         <View>
-          <View style={styles.toastContainer}>
-            <DefaultToast
-              showToast={showToast}
-              valid={isToastSuccessful}
-            >{this.showToast()}</DefaultToast>
-          </View>
+            <View style={styles.toastContainer}>
+              <DefaultToast
+                showToast={showToast}
+                valid={isToastSuccessful}
+              >Upload {this.state.toastStatus}</DefaultToast>
+            </View>
             {this.props.homeDocuments.map((document) => {
                 return (
                     <Card key={document.title}>

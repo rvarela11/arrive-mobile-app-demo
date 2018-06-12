@@ -8,6 +8,7 @@ const defaultToast = props => (
       {...props}
       style={[
         styles.toast,
+        props.showToast ? styles.showToast : styles.hideToast,
         props.style,
         props.valid ? styles.toastSuccess : styles.toastError
       ]}>

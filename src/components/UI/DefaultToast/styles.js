@@ -9,6 +9,12 @@ const styles = StyleSheet.create({
     padding: 4,
     borderRadius: 2,
   },
+  showToast: {
+    display: 'flex'
+  },
+  hideToast: {
+    display: 'none'
+  },
   toast__text: {
     color: '#fff'
   },
