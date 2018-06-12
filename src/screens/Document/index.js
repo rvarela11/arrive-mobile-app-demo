@@ -35,6 +35,14 @@ class DocumentScreen extends Component {
         confirmationModalVisible: false
     }
 
+    componentDidMount () {
+        if (this.props.document && this.props.document.id) {
+            this.setState({
+                document: this.props.document
+            });
+        }
+    }
+
     handleInputChange = (value, field) => {
         if (field === 'docType') {
           this.handleActionSheetIOS(field);
@@ -106,6 +114,7 @@ class DocumentScreen extends Component {
     }
 
     render () {
+        console.log('document screen this.props ------------', this.props)
         const docType = this.state.document.docType;
         return (
             <View style={[mainStyles.screenMainContainer, styles.documentContainer]}>

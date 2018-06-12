@@ -12,8 +12,13 @@ import LoadCard from '../../components/LoadCard';
 const HomeScreen = props => (
     <View>
         {props.homeDocuments.map((document) => {
+            console.log('document---------', document)
             return (
-                <LoadCard key={document.title} document={document} />
+                <LoadCard
+                    key={document.title}
+                    document={document}
+                    navigator={props.navigator}
+                />
             );
         })}
     </View>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     View,
     Text,
@@ -7,20 +7,33 @@ import {
 } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
-const LoadListItem = props => {
-    return (
-        <TouchableOpacity>
-            <ListItem
-                key={props.document.title}
-                avatar={{ uri: props.document.docImage.uri }}
-                hideChevron={false}
-                title={props.document.title}
-                subtitle={props.document.docType}
-            >
-                <Text>{props.document.notes}</Text>
-            </ListItem>
-        </TouchableOpacity>
-    );
+class LoadListItem extends Component {
+    itemSelectedHandler = (document) => {
+        this.props.navigator.push({
+            screen: 'arrivedemo.DocumentScreen',
+            title: 'Document',
+            passProps: {
+                document: document
+            }
+        })
+    }
+
+    render () {
+        console.log('props.document------', this.props.document)
+        return (
+            <TouchableOpacity onPress={() => this.itemSelectedHandler(this.props.document)}>
+                <ListItem
+                    key={this.props.document.title}
+                    avatar={{ uri: this.props.document.docImage.uri }}
+                    hideChevron={false}
+                    title={this.props.document.title}
+                    subtitle={this.props.document.docType}
+                >
+                    <Text>{this.props.document.notes}</Text>
+                </ListItem>
+            </TouchableOpacity>
+        );
+    }
 }
 
 export default LoadListItem;
