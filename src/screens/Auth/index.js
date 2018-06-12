@@ -16,7 +16,6 @@ import startTabs from '../MainTabs';
 
 // Styling
 import mainStyles from '../../styles';
-import styleVariables from '../../style-variables';
 import styles from './styles';
 
 // Images
