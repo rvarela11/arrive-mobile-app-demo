@@ -35,8 +35,9 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* arrivedemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* arrivedemoTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		336DFBF320BDEEB7004CA13E /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 336DFBF220BDEEA5004CA13E /* libRNVectorIcons.a */; };
 		336DFBF520BE30EE004CA13E /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 336DFBF420BE30ED004CA13E /* MaterialCommunityIcons.ttf */; };
+		336DFC8920D02A9A004CA13E /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 336DFBF220BDEEA5004CA13E /* libRNVectorIcons.a */; };
+		336DFC8B20D02D5C004CA13E /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 336DFC8A20D02D5C004CA13E /* MaterialIcons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		6D00A2D220BDA70E00118007 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D00A2D120BDA6F900118007 /* libReactNativeNavigation.a */; };
 		6D3B2DB320C067CB00586B47 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3B2DB120C067A200586B47 /* libRNImagePicker.a */; };
@@ -366,6 +367,7 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		336DFBED20BDEEA5004CA13E /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		336DFBF420BE30ED004CA13E /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		336DFC8A20D02D5C004CA13E /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6D00A2CC20BDA6F900118007 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		6D3B2D8620C067A100586B47 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
@@ -387,8 +389,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336DFC8920D02A9A004CA13E /* libRNVectorIcons.a in Frameworks */,
 				6D3B2DB320C067CB00586B47 /* libRNImagePicker.a in Frameworks */,
-				336DFBF320BDEEB7004CA13E /* libRNVectorIcons.a in Frameworks */,
 				6D00A2D220BDA70E00118007 /* libReactNativeNavigation.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -632,6 +634,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				336DFC8A20D02D5C004CA13E /* MaterialIcons.ttf */,
 				336DFBF420BE30ED004CA13E /* MaterialCommunityIcons.ttf */,
 				13B07FAE1A68108700A75B9A /* arrivedemo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1141,6 +1144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336DFC8B20D02D5C004CA13E /* MaterialIcons.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				336DFBF520BE30EE004CA13E /* MaterialCommunityIcons.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
