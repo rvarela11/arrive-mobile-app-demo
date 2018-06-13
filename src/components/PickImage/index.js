@@ -1,9 +1,11 @@
+// Vendors
 import React, { Component } from 'react';
 import { View, Button, Image, TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-picker';
 import { Card } from 'react-native-elements'
 
+// Styles
 import styles from './styles';
 
 class PickImage extends Component {

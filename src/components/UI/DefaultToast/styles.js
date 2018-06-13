@@ -3,11 +3,8 @@ import styleVariables from '../../../style-variables';
 
 const styles = StyleSheet.create({
   toast: {
-    width: '35%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 4,
-    borderRadius: 2,
+    padding: 8,
+    borderRadius: 2
   },
   showToast: {
     display: 'flex'

@@ -1,6 +1,8 @@
+// Vendors
 import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
+// Styles
 import styles from './styles.js';
 
 const defaultInput = props => (

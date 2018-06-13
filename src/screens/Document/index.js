@@ -8,7 +8,6 @@ import {
   Button,
   ActionSheetIOS
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // Actions
 import { submitDocument } from './actions';
@@ -19,7 +18,7 @@ import DefaultInput from '../../components/UI/DefaultInput';
 import DefaultButton from '../../components/UI/DefaultButton';
 import ConfirmationModal from '../../components/ConfirmationModal';
 
-// Styling
+// Styles
 import mainStyles from '../../styles';
 import styles from './styles';
 
@@ -114,7 +113,6 @@ class DocumentScreen extends Component {
     }
 
     render () {
-        console.log('document screen this.props ------------', this.props)
         const docType = this.state.document.docType;
         return (
             <View style={[mainStyles.screenMainContainer, styles.documentContainer]}>
