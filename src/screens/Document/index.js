@@ -30,6 +30,7 @@ class DocumentScreen extends Component {
             docType: 'Document Type',
             notes: ''
         },
+        isDocFormValid: false,
         successModalVisible: false,
         confirmationModalVisible: false
     }
@@ -51,7 +52,7 @@ class DocumentScreen extends Component {
                 ...this.state.document,
                 [field]: value
             }
-        });
+        }, this.checkForDocValidation);
     }
 
     handleActionSheetIOS = (field) => {
@@ -71,7 +72,7 @@ class DocumentScreen extends Component {
               ...this.state.document,
               [field]: DOCTYPE_ACTIONSHEET_BUTTONS[buttonIndex]
           }
-        });
+        }, this.checkForDocValidation);
       });
     }
 
@@ -81,7 +82,7 @@ class DocumentScreen extends Component {
                 ...this.state.document,
                 docImage: pickedImage
             }
-        });
+        }, this.checkForDocValidation);
     }
 
     handleSubmitDocument = () => {
@@ -110,6 +111,19 @@ class DocumentScreen extends Component {
                 [modalType]: !prevState[modalType]
             };
         });
+    }
+
+    checkForDocValidation = () => {
+      const { document } = this.state;
+      // Get all the valid values from this.state.controls and stop at the first false
+      for (let key in document) {
+        if (document[key] === null || document.title === '' || document[key] === 'Document Type') {
+          this.setState({isDocFormValid: false});
+          return;
+        } else {
+          this.setState({isDocFormValid: true})
+        }
+      }
     }
 
     render () {
@@ -150,6 +164,7 @@ class DocumentScreen extends Component {
                         onPress={this.handleSubmitDocument}
                         style={styles.submitButtonWithBackground}
                         textStyle={styles.submitButtonWithBackground__Text}
+                        disabled={!this.state.isDocFormValid}
                     >
                         UPLOAD
                     </DefaultButton>
