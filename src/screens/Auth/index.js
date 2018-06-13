@@ -14,7 +14,7 @@ import ArriveLogoHeader from '../../components/ArriveLogoHeader';
 import SignButtonsControl from '../../components/SignButtonsControl';
 import startTabs from '../MainTabs';
 
-// Styling
+// Styles
 import mainStyles from '../../styles';
 import styles from './styles';
 

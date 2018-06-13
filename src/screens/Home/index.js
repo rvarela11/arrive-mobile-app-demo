@@ -5,14 +5,13 @@ import {
     Text,
     ImageBackground
 } from 'react-native';
-import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
-import LoadListItem from '../../components/LoadListItem';
 
 // Components
 import DefaultToast from '../../components/UI/DefaultToast';
+import LoadListItem from '../../components/LoadListItem';
 
-// Styling
+// Styles
 import styles from './styles';
 
 class HomeScreen extends Component {
@@ -66,9 +65,9 @@ class HomeScreen extends Component {
 
   render () {
     const { isToastSuccessful, showToast } = this.state;
-    
+
     return (
-        <View>
+        <View style={styles.homeMainContainer}>
             <View style={styles.toastContainer}>
               <DefaultToast
                 showToast={showToast}
@@ -78,7 +77,7 @@ class HomeScreen extends Component {
             {this.props.homeDocuments.map((document) => {
                 return (
                     <LoadListItem
-                        key={document.title}
+                        key={document.id}
                         document={document}
                         navigator={this.props.navigator}
                     />

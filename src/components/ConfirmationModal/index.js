@@ -1,5 +1,8 @@
+// Vendors
 import React, { Component } from 'react';
 import { Modal, Text, TouchableOpacity, View } from 'react-native';
+
+// Styles
 import styles from './styles';
 
 const ConfirmationModal = (props) => (

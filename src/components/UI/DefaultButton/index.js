@@ -1,6 +1,8 @@
+// Vendors
 import React from 'react';
 import { TouchableOpacity, TouchableNativeFeedback, View, Text, StyleSheet, Platform } from 'react-native';
 
+// Styles
 import styles from './styles.js';
 
 const defaultButton = props => {

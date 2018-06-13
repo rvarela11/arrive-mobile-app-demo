@@ -1,6 +1,11 @@
+// Vendors
 import React from 'react';
 import { View } from 'react-native';
+
+// Components
 import DefaultButton from '../UI/DefaultButton';
+
+// Styles
 import styles from './styles';
 
 const SignButtonsControl = (props) => {

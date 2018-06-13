@@ -1,6 +1,8 @@
+// Vendors
 import React from 'react';
 import { View, Text } from 'react-native';
 
+// Styles
 import styles from './styles.js';
 
 const defaultToast = props => (
