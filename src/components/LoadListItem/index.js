@@ -12,14 +12,14 @@ import { ListItem } from 'react-native-elements';
 import styles from './styles';
 
 class LoadListItem extends Component {
-    itemSelectedHandler = (document) => {
+    itemSelectedHandler = (document) => {        
         this.props.navigator.push({
             screen: 'arrivedemo.DocumentScreen',
-            title: 'Document',
+            title: 'Edit Document',
             passProps: {
-                document: document
+                document
             }
-        })
+        });
     }
 
     render () {
