@@ -11,17 +11,27 @@ import styles from './styles';
 class PickImage extends Component {
 
     pickImageHandler = () => {
-        ImagePicker.showImagePicker({
-            title: "Pick an image"
-        }, res => {
-            if (res.didCancel) {
-                console.log('User cancelled');
-            } else if (res.error) {
-                console.log('error', res.error);
-            } else {
-                this.props.handleImageSelection({ uri: res.uri, base64: res.data });
-            }
-        });
+        if (this.props.document && this.props.document.id) {
+            this.props.navigator.push({
+                screen: 'arrivedemo.ImageViewerScreen',
+                title: 'Image Viewer',
+                passProps: {
+                    docImage: this.props.pickedImage
+                }
+            });
+        } else {
+            ImagePicker.showImagePicker({
+                title: "Pick an image"
+            }, res => {
+                if (res.didCancel) {
+                    console.log('User cancelled');
+                } else if (res.error) {
+                    console.log('error', res.error);
+                } else {
+                    this.props.handleImageSelection({ uri: res.uri, base64: res.data });
+                }
+            });
+        }
     }
 
     render () {

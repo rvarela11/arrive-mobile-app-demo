@@ -9,6 +9,7 @@ import configureStore from './src/store/configureStore';
 import Auth from './src/screens/Auth';
 import HomeScreen from './src/screens/Home';
 import DocumentScreen from './src/screens/Document';
+import ImageViewerScreen from './src/screens/ImageViewer';
 
 const store = configureStore();
 
@@ -16,6 +17,7 @@ const store = configureStore();
 Navigation.registerComponent('arrivedemo.Auth', () => Auth, store, Provider);
 Navigation.registerComponent('arrivedemo.HomeScreen', () => HomeScreen, store, Provider);
 Navigation.registerComponent('arrivedemo.DocumentScreen', () => DocumentScreen, store, Provider);
+Navigation.registerComponent('arrivedemo.ImageViewerScreen', () => ImageViewerScreen, store, Provider);
 
 // Start App
 Navigation.startSingleScreenApp({

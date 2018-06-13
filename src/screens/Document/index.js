@@ -147,6 +147,8 @@ class DocumentScreen extends Component {
                 <PickImage
                     handleImageSelection={this.handleImageSelection}
                     pickedImage={this.state.document.docImage}
+                    navigator={this.props.navigator}
+                    document={this.props.document}
                 />
                 <View style={styles.documentInputContainer}>
                     <DefaultInput
