@@ -2,13 +2,12 @@
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-// Styling
+// Styles
 import styleVariables from '../../style-variables';
 
 const startTabs = () => {
     Promise.all([
         Icon.getImageSource('home', 30),
-        Icon.getImageSource('truck', 30),
         Icon.getImageSource('file-document', 30)
     ])
     .then(sources => {
@@ -24,7 +23,7 @@ const startTabs = () => {
                     screen: 'arrivedemo.DocumentScreen',
                     label: 'Document',
                     title: 'Document',
-                    icon: sources[2]
+                    icon: sources[1]
                 }
             ],
             tabsStyle: {
