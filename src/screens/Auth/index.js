@@ -181,7 +181,6 @@ class AuthScreen extends Component {
         this.setState({isSignUpFormValid: true})
       }
     }
-
   }
 
   render () {
