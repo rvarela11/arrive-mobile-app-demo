@@ -12,17 +12,14 @@ import { ListItem } from 'react-native-elements';
 import styles from './styles';
 
 class LoadListItem extends Component {
-    itemSelectedHandler = (document) => {
-        // this.props.navigator.push({
-        //     screen: 'arrivedemo.DocumentScreen',
-        //     title: 'Document',
-        //     passProps: {
-        //         document: document
-        //     }
-        // })
-        this.props.navigator.switchToTab({
-            tabIndex: 1
-        })
+    itemSelectedHandler = (document) => {        
+        this.props.navigator.push({
+            screen: 'arrivedemo.DocumentScreen',
+            title: 'Edit Document',
+            passProps: {
+                document
+            }
+        });
     }
 
     render () {

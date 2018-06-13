@@ -23,6 +23,12 @@ import mainStyles from '../../styles';
 import styles from './styles';
 
 class DocumentScreen extends Component {
+    constructor (props) {
+        super(props);
+
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
+    }
+
     state = {
         document: {
             docImage: null,
@@ -36,9 +42,18 @@ class DocumentScreen extends Component {
 
     componentDidMount () {
         if (this.props.document && this.props.document.id) {
+            this.clearFields();
             this.setState({
                 document: this.props.document
             });
+        }
+    }
+
+    onNavigatorEvent = event => {
+        if (event.type === "ScreenChangedEvent" && event.id && event.id === "willAppear") {
+            if (this.props.documentWasSaved) {
+                this.props.navigator.popToRoot();
+            }
         }
     }
 
@@ -87,9 +102,8 @@ class DocumentScreen extends Component {
     handleSubmitDocument = () => {
         this.props.submitDocument(this.state.document);
         this.clearFields();
-        this.props.navigator.push({
-            screen: "arrivedemo.HomeScreen",
-            title: 'Home'
+        this.props.navigator.switchToTab({
+            tabIndex: 0
         });
     }
 
@@ -173,10 +187,14 @@ class DocumentScreen extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    documentWasSaved: state.document.documentWasSaved
+})
+
 const mapDispatchToProps = (dispatch) => {
     return {
         submitDocument: (document) => dispatch(submitDocument(document))
     }
 }
 
-export default connect(null, mapDispatchToProps)(DocumentScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentScreen);
