@@ -32,9 +32,6 @@ class HomeScreen extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-      console.log('######################################');
-      console.log('------------------------ this.state.showToast', this.state.showToast);
-      console.log('------------------------ prevState', prevState.showToast);
       this.showToast(prevProps.homeDocuments, prevState.showToast);
     }
 
