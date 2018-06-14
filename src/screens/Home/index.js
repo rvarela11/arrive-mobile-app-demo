@@ -3,7 +3,8 @@ import React,{ Component } from 'react';
 import {
     View,
     Text,
-    ImageBackground
+    ImageBackground,
+    FlatList
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -25,14 +26,16 @@ class HomeScreen extends Component {
     }
 
     state = {
-        homeDocuments: 0,
         isToastSuccessful: false,
         showToast: false,
         toastStatus: ''
     }
 
-    componentDidMount() {
-        this.showToast();
+    componentDidUpdate(prevProps, prevState, snapshot) {
+      console.log('######################################');
+      console.log('------------------------ this.state.showToast', this.state.showToast);
+      console.log('------------------------ prevState', prevState.showToast);
+      this.showToast(prevProps.homeDocuments, prevState.showToast);
     }
 
     onNavigatorEvent = event => {
@@ -43,30 +46,24 @@ class HomeScreen extends Component {
         }
     }
 
-    showToast = () => {
-        // Initial Load
-        if (this.props.homeDocuments.length === 0) {
-            return;
-        }
-        // Successful Load
-        else if (this.props.homeDocuments.length > this.state.homeDocuments) {
+    showToast = (prevPropsHomeDocuments, prevStateShowToast) => {
+
+        if (this.props.homeDocuments.length > prevPropsHomeDocuments.length) {
+          // Successful Load
             this.setState({
                 ...this.state,
-                homeDocuments: this.props.homeDocuments.length,
                 isToastSuccessful: true,
                 showToast: true,
                 toastStatus: 'Successful'
-            }, this.hideToast)
-        }
-        // Failed Load
-        else if (this.props.homeDocuments.length === this.state.homeDocuments) {
+            }, this.hideToast);
+        } else if (this.props.homeDocuments.length === prevPropsHomeDocuments.length && this.state.showToast === prevStateShowToast) {
+            // Failed Load
             this.setState({
                 ...this.state,
-                homeDocuments: this.props.homeDocuments.length,
                 isToastSuccessful: false,
                 showToast: true,
                 toastStatus: 'Error'
-            }, this.hideToast)
+            }, this.hideToast);
         }
     }
 
@@ -79,9 +76,10 @@ class HomeScreen extends Component {
         }, 3000);
     }
 
+    _keyExtractor = (item, index) => item.id;
+
     render () {
         const { isToastSuccessful, showToast } = this.state;
-
         return (
             <View style={styles.homeMainContainer}>
                 <View style={styles.toastContainer}>
@@ -90,15 +88,19 @@ class HomeScreen extends Component {
                     valid={isToastSuccessful}
                 >Upload {this.state.toastStatus}</DefaultToast>
             </View>
-            {this.props.homeDocuments.map((document) => {
+            <FlatList
+              data={this.props.homeDocuments}
+              keyExtractor={this._keyExtractor}
+              renderItem={({item}) => {
                 return (
-                    <LoadListItem
-                        key={document.id}
-                        document={document}
-                        navigator={this.props.navigator}
-                    />
+                  <LoadListItem
+                      key={item.id}
+                      document={item}
+                      navigator={this.props.navigator}
+                  />
                 );
-            })}
+              }}
+            />
         </View>
     );
   }
