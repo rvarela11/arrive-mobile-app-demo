@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import styleVariables from '../../style-variables';
 
 const styles = StyleSheet.create({
     imageViewerContainer: {
@@ -6,8 +7,17 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     changePhotoContainer: {
-        height: '10%',
-        width: '100%'
+        height: '20%',
+        width: '100%',
+        marginTop: '0.7%'
+    },
+    changePhotoButtonWithBackground: {
+        backgroundColor: styleVariables.arriveBlue,
+    },
+    changePhotoButtonWithBackground__Text: {
+        color: '#fff',
+        fontWeight: '800',
+        fontSize: 16
     },
     documentImage: {
         height: '90%',

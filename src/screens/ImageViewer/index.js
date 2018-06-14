@@ -3,22 +3,30 @@ import React,{ Component } from 'react';
 import {
     View,
     Text,
-    Button,
     Image
 } from 'react-native';
 
+// Components
+import DefaultButton from '../../components/UI/DefaultButton';
+
+// Styles
 import styles from './styles';
 
 const ImageViewer = (props) => {
     return (
         <View style={styles.imageViewerContainer}>
-            <View style={styles.changePhotoContainer}>
-                <Button title='Use Different Image' />
-            </View>
             <Image
                 source={props.docImage}
                 style={styles.documentImage}
             />
+            <View style={styles.changePhotoContainer}>
+                <DefaultButton
+                    style={styles.changePhotoButtonWithBackground}
+                    textStyle={styles.changePhotoButtonWithBackground__Text}
+                >
+                    Change Photo
+                </DefaultButton>
+            </View>
         </View>
     );
 }
