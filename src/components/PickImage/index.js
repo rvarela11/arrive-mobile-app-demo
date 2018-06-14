@@ -16,7 +16,8 @@ class PickImage extends Component {
                 screen: 'arrivedemo.ImageViewerScreen',
                 title: 'Image Viewer',
                 passProps: {
-                    docImage: this.props.pickedImage
+                    docImage: this.props.pickedImage,
+                    handleImageSelection: this.props.handleImageSelection
                 }
             });
         } else {
