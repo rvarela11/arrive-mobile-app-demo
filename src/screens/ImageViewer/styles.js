@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         marginTop: '0.7%'
     },
     changePhotoButtonWithBackground: {
-        backgroundColor: styleVariables.arriveBlue,
+        backgroundColor: styleVariables.arriveBlue
     },
     changePhotoButtonWithBackground__Text: {
         color: '#fff',
