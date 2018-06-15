@@ -1,8 +1,9 @@
-export const submitDocument = (documentInfo) => {
+export const submitDocument = (documentInfo, docStatus) => {
     return (dispatch) => {
         dispatch({
             type: 'SUBMIT_DOCUMENT',
-            payload: documentInfo
+            payload: documentInfo,
+            docStatus
         });
     }
 }

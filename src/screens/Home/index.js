@@ -44,8 +44,15 @@ class HomeScreen extends Component {
     }
 
     showToast = (prevPropsHomeDocuments, prevStateShowToast) => {
+        const { homeDocuments } = this.props;
+        const areDocumentsEqual = JSON.stringify(homeDocuments) === JSON.stringify(prevPropsHomeDocuments);
 
-        if (this.props.homeDocuments.length > prevPropsHomeDocuments.length) {
+        // Do not show toast if document has been edited to the same information
+        if (this.props.hasDocumentBeenEdited && areDocumentsEqual) {
+          return ;
+        }
+
+        if (!areDocumentsEqual) {
           // Successful Load
             this.setState({
                 ...this.state,
@@ -53,7 +60,7 @@ class HomeScreen extends Component {
                 showToast: true,
                 toastStatus: 'Successful'
             }, this.hideToast);
-        } else if (this.props.homeDocuments.length === prevPropsHomeDocuments.length && this.state.showToast === prevStateShowToast) {
+        } else if ((areDocumentsEqual) && this.state.showToast === prevStateShowToast) {
             // Failed Load
             this.setState({
                 ...this.state,
@@ -118,7 +125,8 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-    homeDocuments: state.homeDocuments
+    homeDocuments: state.homeDocuments,
+    hasDocumentBeenEdited: state.document.hasDocumentBeenEdited
 });
 
 const mapDispatchToProps = dispatch => {

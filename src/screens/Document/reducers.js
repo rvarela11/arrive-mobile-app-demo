@@ -1,13 +1,30 @@
 import { SUBMIT_DOCUMENT, RESET_DOCUMENT_SAVED } from '../../store/actionTypes';
 
-const documentReducer = (state = { documentWasSaved: false }, action) => {
+const initialState = {
+  documentWasSaved: false,
+  hasDocumentBeenEdited: false
+}
+
+const documentReducer = (state = initialState , action) => {
     switch(action.type) {
         case SUBMIT_DOCUMENT:
-            return { documentWasSaved: true }
-
+            if(action.docStatus === 'SAVE') {
+              return {
+                ...state,
+                documentWasSaved: true,
+                hasDocumentBeenEdited: true
+              }
+            }
+            return {
+              ...state,
+              documentWasSaved: true,
+              hasDocumentBeenEdited: false
+            }
         case RESET_DOCUMENT_SAVED:
-            return { documentWasSaved: false }
-
+            return {
+              ...state,
+              documentWasSaved: false
+            }
         default:
             return state;
     }
