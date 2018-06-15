@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
       flex: 1
     },
     docTypeContainer__Text__Unselected: {
-      color: '#C7C7CD'
+      color: styleVariables.placeholderGrey
     },
     docTypeContainer__Text__Selected: {
       color: '#000'
