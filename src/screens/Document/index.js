@@ -118,6 +118,9 @@ class DocumentScreen extends Component {
         this.props.navigator.switchToTab({
             tabIndex: 0
         });
+        if (this.props.document && this.props.document.id) {
+            this.props.navigator.popToRoot();
+        }
     }
 
     clearFields = () => {
@@ -234,12 +237,12 @@ class DocumentScreen extends Component {
 
 const mapStateToProps = state => ({
     documentWasSaved: state.document.documentWasSaved
-})
+});
 
 const mapDispatchToProps = (dispatch) => {
     return {
         submitDocument: (document) => dispatch(submitDocument(document))
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DocumentScreen);
