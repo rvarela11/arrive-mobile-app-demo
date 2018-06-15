@@ -12,8 +12,9 @@ import { ListItem } from 'react-native-elements';
 import styles from './styles';
 
 class LoadListItem extends Component {
-    itemSelectedHandler = (document) => {        
+    itemSelectedHandler = (document) => {
         this.props.navigator.push({
+            backButtonTitle: 'Back',
             screen: 'arrivedemo.DocumentScreen',
             title: 'Edit Document',
             passProps: {
