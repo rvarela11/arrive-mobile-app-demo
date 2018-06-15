@@ -27,18 +27,23 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       padding: 0,
       paddingTop: 0,
-      paddingLeft: 0,
-      paddingBottom: 5,
+      paddingLeft: 4,
+      paddingBottom: 0,
       paddingRight: 0,
       margin: 0,
-      marginTop: 8,
+      marginTop: 4,
       marginLeft: 0,
       marginBottom: 0,
-      marginRight: 0,
-      alignItems: 'flex-start'
+      marginRight: 0
     },
     docTypeContainer__Text: {
+      flex: 1
+    },
+    docTypeContainer__Text__Unselected: {
       color: '#C7C7CD'
+    },
+    docTypeContainer__Text__Selected: {
+      color: '#000'
     },
     submitButtonContainer: {
         width: "100%",
