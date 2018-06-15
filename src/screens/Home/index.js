@@ -77,27 +77,41 @@ class HomeScreen extends Component {
 
     render () {
         const { isToastSuccessful, showToast } = this.state;
-        return (
-            <View style={styles.homeMainContainer}>
-                <View style={styles.toastContainer}>
-                <DefaultToast
-                    showToast={showToast}
-                    valid={isToastSuccessful}
-                >Upload {this.state.toastStatus}</DefaultToast>
+        let list = null;
+
+        if (this.props.homeDocuments.length > 0) {
+          list = (
+              <FlatList
+                data={this.props.homeDocuments}
+                keyExtractor={this._keyExtractor}
+                renderItem={({item}) => {
+                  return (
+                    <LoadListItem
+                        key={item.id}
+                        document={item}
+                        navigator={this.props.navigator}
+                    />
+                  );
+                }}
+              />
+          )
+        } else {
+          list = (
+            <View style={styles.noDocumentsContainer}>
+              <Text style={styles.noDocumentsContainer__Text}> No Documents </Text>
             </View>
-            <FlatList
-              data={this.props.homeDocuments}
-              keyExtractor={this._keyExtractor}
-              renderItem={({item}) => {
-                return (
-                  <LoadListItem
-                      key={item.id}
-                      document={item}
-                      navigator={this.props.navigator}
-                  />
-                );
-              }}
-            />
+          )
+        }
+
+    return (
+        <View style={styles.homeMainContainer}>
+            <View style={styles.toastContainer}>
+              <DefaultToast
+                  showToast={showToast}
+                  valid={isToastSuccessful}
+              >Upload {this.state.toastStatus}</DefaultToast>
+            </View>
+            {list}
         </View>
     );
   }

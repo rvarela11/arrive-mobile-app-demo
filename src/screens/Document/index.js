@@ -21,6 +21,7 @@ import ConfirmationModal from '../../components/ConfirmationModal';
 // Styles
 import mainStyles from '../../styles';
 import styles from './styles';
+import styleVariables from '../../style-variables';
 
 class DocumentScreen extends Component {
     constructor (props) {
@@ -183,7 +184,7 @@ class DocumentScreen extends Component {
                         icon={true}
                         iconSize={22}
                         iconName="chevron-down"
-                        iconColor="#C7C7CD"
+                        iconColor={styleVariables.placeholderGrey}
                     >
                       {docType}
                     </DefaultButton>
