@@ -1,5 +1,6 @@
 // Vendors
 import React,{ Component } from 'react';
+import { connect } from 'react-redux';
 import {
     View,
     Text,
@@ -14,6 +15,12 @@ import DefaultButton from '../../components/UI/DefaultButton';
 import styles from './styles';
 
 class ImageViewer extends Component {
+    constructor (props) {
+        super(props);
+
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
+    }
+
     state = {
         docImage: null
     }
@@ -22,6 +29,14 @@ class ImageViewer extends Component {
         this.setState({
             docImage: this.props.docImage
         });
+    }
+
+    onNavigatorEvent = event => {
+        if (event.type === "ScreenChangedEvent" && event.id && event.id === "willAppear") {
+            if (this.props.documentWasSaved) {
+                this.props.navigator.popToRoot();
+            }
+        }
     }
 
     pickImageHandler = () => {
@@ -62,4 +77,8 @@ class ImageViewer extends Component {
     }
 }
 
-export default ImageViewer;
+const mapStateToProps = state => ({
+    documentWasSaved: state.document.documentWasSaved
+});
+
+export default connect(mapStateToProps)(ImageViewer);
