@@ -3,7 +3,14 @@ import { SUBMIT_DOCUMENT } from '../../store/actionTypes';
 const homeDocumentsReducer = (state = [], action) => {
     switch (action.type) {
         case SUBMIT_DOCUMENT:
-            return [ {...action.payload, id: ID()} ].concat(state);
+            if (!action.payload.id) {
+                return [ {...action.payload, id: ID()} ].concat(state);
+            } else {
+                return state.map((document, index) => {
+                    return document.id === action.payload.id ? action.payload : state[index]
+                });
+            }
+            
 
         default:
             return state;
