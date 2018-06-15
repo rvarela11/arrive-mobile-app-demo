@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
       borderRadius: 2,
       alignItems: 'center'
   },
+  buttonWithIcon: {
+      flexDirection: 'row',
+  },
   disabled: {
     backgroundColor: '#eee'
   }

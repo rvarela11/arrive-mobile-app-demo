@@ -13,6 +13,7 @@ class PickImage extends Component {
     pickImageHandler = () => {
         if (this.props.document && this.props.document.id) {
             this.props.navigator.push({
+                backButtonTitle: 'Back',
                 screen: 'arrivedemo.ImageViewerScreen',
                 title: 'Image Viewer',
                 passProps: {

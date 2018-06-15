@@ -102,6 +102,7 @@ class DocumentScreen extends Component {
 
     handleNotesFieldFocus = () => {
         this.props.navigator.push({
+            backButtonTitle: 'Back',
             screen: 'arrivedemo.NotesScreen',
             title: 'Notes',
             passProps: {
@@ -153,6 +154,7 @@ class DocumentScreen extends Component {
 
     render () {
         const docType = this.state.document.docType;
+
         return (
             <View style={[mainStyles.screenMainContainer, styles.documentContainer]}>
                 <PickImage
@@ -174,8 +176,17 @@ class DocumentScreen extends Component {
                     <DefaultButton
                         onPress={() => this.handleInputChange(null, 'docType')}
                         style={styles.docTypeContainer}
-                        textStyle={(docType === 'Document Type') ? styles.docTypeContainer__Text : null}
-                    > {docType}</DefaultButton>
+                        textStyle={[
+                          styles.docTypeContainer__Text,
+                          (docType === 'Document Type') ? styles.docTypeContainer__Text__Unselected : styles.docTypeContainer__Text__Selected
+                        ]}
+                        icon={true}
+                        iconSize={22}
+                        iconName="chevron-down"
+                        iconColor="#C7C7CD"
+                    >
+                      {docType}
+                    </DefaultButton>
                     <TouchableOpacity
                         onPress={this.handleNotesFieldFocus}
                     >
