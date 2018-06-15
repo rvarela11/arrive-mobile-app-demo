@@ -60,7 +60,7 @@ class DocumentScreen extends Component {
 
     handleInputChange = (value, field) => {
         if (field === 'docType') {
-          this.handleActionSheetIOS(field);
+            this.handleActionSheetIOS(field);
         }
         this.setState({
             document: {
@@ -71,24 +71,24 @@ class DocumentScreen extends Component {
     }
 
     handleActionSheetIOS = (field) => {
-      const DOCTYPE_ACTIONSHEET_BUTTONS = [
-        'Weight Ticket',
-        'PPW',
-        'BOL',
-        'POD'
-      ]
+        const DOCTYPE_ACTIONSHEET_BUTTONS = [
+            'Weight Ticket',
+            'PPW',
+            'BOL',
+            'POD'
+        ]
 
-      ActionSheetIOS.showActionSheetWithOptions({
-        options: DOCTYPE_ACTIONSHEET_BUTTONS,
-      },
-      (buttonIndex) => {
-        this.setState({
-          document: {
-              ...this.state.document,
-              [field]: DOCTYPE_ACTIONSHEET_BUTTONS[buttonIndex]
-          }
-        }, this.checkForDocValidation);
-      });
+        ActionSheetIOS.showActionSheetWithOptions({
+            options: DOCTYPE_ACTIONSHEET_BUTTONS,
+        },
+        (buttonIndex) => {
+            this.setState({
+                document: {
+                    ...this.state.document,
+                    [field]: DOCTYPE_ACTIONSHEET_BUTTONS[buttonIndex]
+                }
+            }, this.checkForDocValidation);
+        });
     }
 
     handleImageSelection = (pickedImage) => {
@@ -98,6 +98,17 @@ class DocumentScreen extends Component {
                 docImage: pickedImage
             }
         }, this.checkForDocValidation);
+    }
+
+    handleNotesFieldFocus = () => {
+        this.props.navigator.push({
+            screen: 'arrivedemo.NotesScreen',
+            title: 'Notes',
+            passProps: {
+                notes: this.state.document.notes,
+                handleInputChange: this.handleInputChange
+            }
+        });
     }
 
     handleSubmitDocument = () => {
@@ -128,16 +139,16 @@ class DocumentScreen extends Component {
     }
 
     checkForDocValidation = () => {
-      const { document } = this.state;
-      // Get all the valid values from this.state.controls and stop at the first false
-      for (let key in document) {
-        if (document[key] === null || document.title === '' || document[key] === 'Document Type') {
-          this.setState({isDocFormValid: false});
-          return;
-        } else {
-          this.setState({isDocFormValid: true})
+        const { document } = this.state;
+        // Get all the valid values from this.state.controls and stop at the first false
+        for (let key in document) {
+            if (document[key] === null || document.title === '' || document[key] === 'Document Type') {
+                this.setState({isDocFormValid: false});
+                return;
+            } else {
+                this.setState({isDocFormValid: true})
+            }
         }
-      }
     }
 
     render () {
@@ -165,15 +176,21 @@ class DocumentScreen extends Component {
                         style={styles.docTypeContainer}
                         textStyle={(docType === 'Document Type') ? styles.docTypeContainer__Text : null}
                     > {docType}</DefaultButton>
-                    <DefaultInput
-                        placeholder="Notes"
-                        valid={true}
-                        value={this.state.document.notes}
-                        onChangeText={(value) => {
-                            this.handleInputChange(value, 'notes')}
-                        }
-                        style={styles.documentInput}
-                    />
+                    <TouchableOpacity
+                        onPress={this.handleNotesFieldFocus}
+                    >
+                        <DefaultInput
+                            placeholder="Notes"
+                            valid={true}
+                            value={this.state.document.notes}
+                            onChangeText={(value) => {
+                                this.handleInputChange(value, 'notes')}
+                            }
+                            style={styles.documentInput}
+                            numberOfLines={1}
+                            pointerEvents='none'
+                        />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.submitButtonContainer}>
                     <DefaultButton
