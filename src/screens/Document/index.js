@@ -48,7 +48,7 @@ class DocumentScreen extends Component {
             this.clearFields();
             this.setState({
                 document: this.props.document,
-                docStatus: 'SAVE'
+                docStatus: 'SAVE CHANGES'
             });
         }
     }
@@ -148,9 +148,10 @@ class DocumentScreen extends Component {
 
     checkForDocValidation = () => {
         const { document } = this.state;
+        const areDocumentsEqual = JSON.stringify(this.props.document) === JSON.stringify(this.state.document);
         // Get all the valid values from this.state.controls and stop at the first false
         for (let key in document) {
-            if (document[key] === null || document.title === '' || document[key] === 'Document Type') {
+            if (document[key] === null || document.title === '' || document[key] === 'Document Type' || areDocumentsEqual) {
                 this.setState({isDocFormValid: false});
                 return;
             } else {

@@ -8,7 +8,7 @@ const initialState = {
 const documentReducer = (state = initialState , action) => {
     switch(action.type) {
         case SUBMIT_DOCUMENT:
-            if(action.docStatus === 'SAVE') {
+            if(action.docStatus === 'SAVE CHANGES') {
               return {
                 ...state,
                 documentWasSaved: true,
