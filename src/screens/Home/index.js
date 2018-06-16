@@ -18,6 +18,9 @@ import styles from './styles';
 // Actions
 import { resetDocumentSaved } from './actions';
 
+// Utility
+import { findDocById } from '../../utility/toast-helper';
+
 class HomeScreen extends Component {
     constructor (props) {
         super(props);
@@ -26,12 +29,13 @@ class HomeScreen extends Component {
     }
 
     state = {
+        editedDocumentID: 0,
         isToastSuccessful: false,
         showToast: false,
         toastStatus: ''
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(prevProps, prevState) {
       this.showToast(prevProps.homeDocuments, prevState.showToast);
     }
 
@@ -44,8 +48,14 @@ class HomeScreen extends Component {
     }
 
     showToast = (prevPropsHomeDocuments, prevStateShowToast) => {
+        const { homeDocuments, hasDocumentBeenEdited } = this.props;
 
-        if (this.props.homeDocuments.length > prevPropsHomeDocuments.length) {
+        // Getting the document that is being edited
+        const prevDoc = findDocById(prevPropsHomeDocuments, this.state.editedDocumentID);
+        const propsDoc = findDocById(homeDocuments, this.state.editedDocumentID);
+        const areDocumentsEqual = JSON.stringify(prevDoc) === JSON.stringify(propsDoc);
+
+        if (!areDocumentsEqual) {
           // Successful Load
             this.setState({
                 ...this.state,
@@ -53,7 +63,7 @@ class HomeScreen extends Component {
                 showToast: true,
                 toastStatus: 'Successful'
             }, this.hideToast);
-        } else if (this.props.homeDocuments.length === prevPropsHomeDocuments.length && this.state.showToast === prevStateShowToast) {
+        } else if ((areDocumentsEqual) && this.state.showToast === prevStateShowToast) {
             // Failed Load
             this.setState({
                 ...this.state,
@@ -75,6 +85,13 @@ class HomeScreen extends Component {
 
     _keyExtractor = (item, index) => item.id;
 
+    getLoadListItemId = (id) => {
+      this.setState({
+          ...this.state,
+          editedDocumentID: id
+      })
+    }
+
     render () {
         const { isToastSuccessful, showToast } = this.state;
         let list = null;
@@ -90,6 +107,7 @@ class HomeScreen extends Component {
                         key={item.id}
                         document={item}
                         navigator={this.props.navigator}
+                        getLoadListItemId={this.getLoadListItemId}
                     />
                   );
                 }}
@@ -118,7 +136,8 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-    homeDocuments: state.homeDocuments
+    homeDocuments: state.homeDocuments,
+    hasDocumentBeenEdited: state.document.hasDocumentBeenEdited
 });
 
 const mapDispatchToProps = dispatch => {

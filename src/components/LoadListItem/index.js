@@ -21,6 +21,7 @@ class LoadListItem extends Component {
                 document
             }
         });
+      this.props.getLoadListItemId(document.id);
     }
 
     render () {

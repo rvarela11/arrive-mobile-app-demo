@@ -10,7 +10,7 @@ const homeDocumentsReducer = (state = [], action) => {
                     return document.id === action.payload.id ? action.payload : state[index]
                 });
             }
-            
+
 
         default:
             return state;

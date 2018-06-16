@@ -37,6 +37,7 @@ class DocumentScreen extends Component {
             docType: 'Document Type',
             notes: ''
         },
+        docStatus: 'UPLOAD',
         isDocFormValid: false,
         successModalVisible: false,
         confirmationModalVisible: false
@@ -46,7 +47,8 @@ class DocumentScreen extends Component {
         if (this.props.document && this.props.document.id) {
             this.clearFields();
             this.setState({
-                document: this.props.document
+                document: this.props.document,
+                docStatus: 'SAVE CHANGES'
             });
         }
     }
@@ -114,7 +116,7 @@ class DocumentScreen extends Component {
     }
 
     handleSubmitDocument = () => {
-        this.props.submitDocument(this.state.document);
+        this.props.submitDocument(this.state.document, this.state.docStatus);
         this.clearFields();
         this.props.navigator.switchToTab({
             tabIndex: 0
@@ -131,7 +133,8 @@ class DocumentScreen extends Component {
                 title: '',
                 docType: 'Document Type',
                 notes: ''
-            }
+            },
+            docStatus: 'UPLOAD'
         });
     }
 
@@ -145,9 +148,10 @@ class DocumentScreen extends Component {
 
     checkForDocValidation = () => {
         const { document } = this.state;
+        const areDocumentsEqual = JSON.stringify(this.props.document) === JSON.stringify(this.state.document);
         // Get all the valid values from this.state.controls and stop at the first false
         for (let key in document) {
-            if (document[key] === null || document.title === '' || document[key] === 'Document Type') {
+            if (document[key] === null || document.title === '' || document[key] === 'Document Type' || areDocumentsEqual) {
                 this.setState({isDocFormValid: false});
                 return;
             } else {
@@ -158,7 +162,6 @@ class DocumentScreen extends Component {
 
     render () {
         const docType = this.state.document.docType;
-
         return (
             <View style={[mainStyles.screenMainContainer, styles.documentContainer]}>
                 <PickImage
@@ -214,7 +217,7 @@ class DocumentScreen extends Component {
                         textStyle={styles.submitButtonWithBackground__Text}
                         disabled={!this.state.isDocFormValid}
                     >
-                        UPLOAD
+                        {this.state.docStatus}
                     </DefaultButton>
                 </View>
                 <View style={styles.cancelButtonContainer}>
@@ -242,7 +245,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        submitDocument: (document) => dispatch(submitDocument(document))
+        submitDocument: (document, docStatus) => dispatch(submitDocument(document, docStatus))
     }
 };
 
