@@ -30,13 +30,14 @@ class HomeScreen extends Component {
 
     state = {
         editedDocumentID: 0,
+        isToastBeingEdited: false,
         isToastSuccessful: false,
         showToast: false,
         toastStatus: ''
     }
 
     componentDidUpdate(prevProps, prevState) {
-      this.showToast(prevProps.homeDocuments, prevState.showToast);
+      this.showToast(prevProps.homeDocuments, prevState);
     }
 
     onNavigatorEvent = event => {
@@ -47,26 +48,34 @@ class HomeScreen extends Component {
         }
     }
 
-    showToast = (prevPropsHomeDocuments, prevStateShowToast) => {
-        const { homeDocuments, hasDocumentBeenEdited } = this.props;
+    showToast = (prevPropsHomeDocuments, prevState) => {
+        const { homeDocuments } = this.props;
+        const { editedDocumentID, isToastBeingEdited, showToast } = this.state;
 
         // Getting the document that is being edited
-        const prevDoc = findDocById(prevPropsHomeDocuments, this.state.editedDocumentID);
-        const propsDoc = findDocById(homeDocuments, this.state.editedDocumentID);
+        const prevDoc = findDocById(prevPropsHomeDocuments, editedDocumentID);
+        const propsDoc = findDocById(homeDocuments, editedDocumentID);
         const areDocumentsEqual = JSON.stringify(prevDoc) === JSON.stringify(propsDoc);
+
+        // Do not show toast if document is bieng edited
+        if (isToastBeingEdited && areDocumentsEqual) {
+          return;
+        }
 
         if (!areDocumentsEqual) {
           // Successful Load
             this.setState({
                 ...this.state,
+                isToastBeingEdited: false,
                 isToastSuccessful: true,
                 showToast: true,
                 toastStatus: 'Successful'
             }, this.hideToast);
-        } else if ((areDocumentsEqual) && this.state.showToast === prevStateShowToast) {
+        } else if ((areDocumentsEqual) && showToast === prevState.showToast) {
             // Failed Load
             this.setState({
                 ...this.state,
+                isToastBeingEdited: false,
                 isToastSuccessful: false,
                 showToast: true,
                 toastStatus: 'Error'
@@ -88,7 +97,8 @@ class HomeScreen extends Component {
     getLoadListItemId = (id) => {
       this.setState({
           ...this.state,
-          editedDocumentID: id
+          editedDocumentID: id,
+          isToastBeingEdited: true
       })
     }
 
@@ -136,8 +146,7 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-    homeDocuments: state.homeDocuments,
-    hasDocumentBeenEdited: state.document.hasDocumentBeenEdited
+    homeDocuments: state.homeDocuments
 });
 
 const mapDispatchToProps = dispatch => {
