@@ -3,13 +3,23 @@ import styleVariables from '../../style-variables';
 
 const styles = StyleSheet.create({
     imageViewerContainer: {
+        flex: 1,
+        width: '100%'
+    },
+    documentImageContainer: {
+      height: '90%',
+      width: '100%'
+    },
+    documentImage: {
         height: '100%',
         width: '100%'
     },
     changePhotoContainer: {
-        height: '20%',
+        height: '10%',
         width: '100%',
-        marginTop: '0.7%'
+        marginTop: '0.7%',
+        paddingLeft: '10%',
+        paddingRight: '10%'
     },
     changePhotoButtonWithBackground: {
         backgroundColor: styleVariables.arriveBlue
@@ -18,10 +28,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: '800',
         fontSize: 16
-    },
-    documentImage: {
-        height: '90%',
-        width: '100%'
     }
 });
 
