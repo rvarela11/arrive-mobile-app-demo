@@ -1,3 +1,3 @@
 ### Arrive Mobile App Demo
 
-![Alt text](src/assets/arrive-demo-cover.png "Arrive Sign In Screen")
+![Alt text](https://media.giphy.com/media/3ixPVDeKMle3NQI14B/giphy.gif)
