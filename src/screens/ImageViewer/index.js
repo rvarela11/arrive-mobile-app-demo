@@ -59,19 +59,21 @@ class ImageViewer extends Component {
     render () {
         return (
             <View style={styles.imageViewerContainer}>
+              <View style={styles.documentImageContainer}>
                 <Image
                     source={this.state.docImage}
                     style={styles.documentImage}
                 />
-                <View style={styles.changePhotoContainer}>
-                    <DefaultButton
-                        style={styles.changePhotoButtonWithBackground}
-                        textStyle={styles.changePhotoButtonWithBackground__Text}
-                        onPress={this.pickImageHandler}
-                    >
-                        Change Photo
-                    </DefaultButton>
-                </View>
+              </View>
+              <View style={styles.changePhotoContainer}>
+                  <DefaultButton
+                      style={styles.changePhotoButtonWithBackground}
+                      textStyle={styles.changePhotoButtonWithBackground__Text}
+                      onPress={this.pickImageHandler}
+                  >
+                      Change Photo
+                  </DefaultButton>
+              </View>
             </View>
         );
     }
