@@ -1,12 +1,11 @@
 // Vendors
 import React, { Component } from 'react';
-import {
-    View,
-    Text,
-    Image,
-    TouchableOpacity
-} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { ListItem } from 'react-native-elements';
+
+// Components
+import LoadListItemTitle from './LoadListItemTitle';
+import LoadListItemSubtitle from './LoadListItemSubtitle';
 
 // Styles
 import styles from './styles';
@@ -32,24 +31,12 @@ class LoadListItem extends Component {
                     avatar={{ uri: this.props.document.docImage.uri }}
                     avatarContainerStyle={styles.avatarContainer}
                     avatarStyle={styles.avatar}
-                    title={
-                      <View style={[styles.infoContainer, styles.infoContainer__title]}>
-                        <Text
-                          style={[styles.text, styles.textTitle]}
-                          numberOfLines={1}
-                        >{this.props.document.title}</Text>
-                      </View>
-                    }
+                    title={<LoadListItemTitle title={this.props.document.title} />}
                     subtitle={
-                      <View style={[styles.infoContainer, styles.infoContainer__subTitle]}>
-                        <Text
-                          style={[styles.text, styles.textDocType]}
-                        >{this.props.document.docType}</Text>
-                        <Text
-                          style={[styles.text, styles.textNotes]}
-                          numberOfLines={3}
-                        >{this.props.document.notes}</Text>
-                      </View>
+                        <LoadListItemSubtitle
+                            docType={this.props.document.docType}
+                            notes={this.props.document.notes}
+                        />
                     }
                 >
                 </ListItem>

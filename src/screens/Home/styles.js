@@ -6,15 +6,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     flex: 1
   },
-  noDocumentsContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  noDocumentsContainer__Text: {
-    fontSize: 24,
-    color: styleVariables.placeholderGrey
-  },
   toastContainer: {
     position: 'absolute',
     top: 0,
