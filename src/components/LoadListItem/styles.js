@@ -2,16 +2,16 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     avatarContainer: {
+      minHeight: 100,
       width: '25%',
-      minHeight: 100
     },
     avatar: {
+      height: '100%',
       width: '100%',
-      height: '100%'
     },
     infoContainer: {
+      marginLeft: 20,
       width: '85%',
-      marginLeft: 20
     },
     infoContainer__title: {
       minHeight: 25
@@ -20,16 +20,16 @@ const styles = StyleSheet.create({
       minHeight: 75
     },
     text: {
-      marginTop: 2,
       marginBottom: 2,
+      marginTop: 2,
     },
     textTitle: {
+      fontSize: 16,
       fontWeight: 'bold',
-      fontSize: 16
     },
     textDocType: {
       color: '#86939e',
-      fontWeight: '600'
+      fontWeight: '600',
     },
     textNotes: {
       lineHeight: 18

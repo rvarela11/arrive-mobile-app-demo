@@ -10,24 +10,24 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   termsAndConditionsContainer: {
+    alignItems: 'center',
     padding: 10,
-    alignItems: 'center'
   },
   signButtonWithBackground: {
     backgroundColor: styleVariables.arriveBlue
   },
   signButtonWithBackground__Text: {
     color: '#fff',
+    fontSize: 16,
     fontWeight: '800',
-    fontSize: 16
   },
   inputLabelContainer: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   showErrorMessage: {
     color: 'red',
-    marginLeft: 8
+    marginLeft: 8,
   },
   hideErrorMessage: {
     display: 'none'

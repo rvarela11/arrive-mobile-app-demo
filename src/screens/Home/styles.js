@@ -3,17 +3,17 @@ import styleVariables from '../../style-variables';
 
 const styles = StyleSheet.create({
   homeMainContainer: {
+    flex: 1,
     position: 'relative',
-    flex: 1
   },
   toastContainer: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    left: 0,
-    justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 1000
+    justifyContent: 'center',
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    zIndex: 1000,
   }
 });
 

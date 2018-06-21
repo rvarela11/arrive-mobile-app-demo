@@ -3,38 +3,38 @@ import styleVariables from '../../style-variables';
 
 const styles = StyleSheet.create({
     documentContainer: {
-        justifyContent: 'space-between',
-        alignItems: 'center',
+      alignItems: 'center',
+      justifyContent: 'space-between',
     },
     documentInputContainer: {
+      marginTop: 20,
       width: '100%',
-      marginTop: 20
     },
     documentInput: {
-        borderWidth: 1,
-        borderBottomColor: styleVariables.arriveBlue,
-        borderTopColor: "white",
-        borderLeftColor: "white",
-        borderRightColor: "white"
-    },
-    docTypeContainer: {
-      borderWidth: 1,
       borderBottomColor: styleVariables.arriveBlue,
-      borderTopColor: "white",
       borderLeftColor: "white",
       borderRightColor: "white",
-      width: '100%',
+      borderTopColor: "white",
+      borderWidth: 1,
+    },
+    docTypeContainer: {
       backgroundColor: '#fff',
+      borderBottomColor: styleVariables.arriveBlue,
+      borderLeftColor: "white",
+      borderRightColor: "white",
+      borderTopColor: "white",
+      borderWidth: 1, 
       padding: 0,
-      paddingTop: 0,
-      paddingLeft: 4,
       paddingBottom: 0,
+      paddingLeft: 4,
       paddingRight: 0,
+      paddingTop: 0,
       margin: 0,
-      marginTop: 4,
-      marginLeft: 0,
       marginBottom: 0,
-      marginRight: 0
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 4,
+      width: '100%',
     },
     docTypeContainer__Text: {
       flex: 1
@@ -46,28 +46,28 @@ const styles = StyleSheet.create({
       color: '#000'
     },
     submitButtonContainer: {
-        width: "100%",
-        marginTop: 20
+      marginTop: 20,
+      width: "100%",
     },
     submitButtonWithBackground: {
-        backgroundColor: styleVariables.arriveBlue
+      backgroundColor: styleVariables.arriveBlue
     },
     submitButtonWithBackground__Text: {
-        color: '#fff',
-        fontWeight: '800',
-        fontSize: 16
+      color: '#fff',
+      fontSize: 16,
+      fontWeight: '800',
     },
     cancelButtonContainer: {
-        width: "100%",
-        marginTop: 10
+      marginTop: 10,
+      width: "100%",
     },
     cancelButtonWithBackground: {
-        backgroundColor: '#cccccc'
+      backgroundColor: '#cccccc'
     },
     cancelButtonWithBackground__Text: {
-        color: '#fff',
-        fontWeight: '800',
-        fontSize: 16
+      color: '#fff',
+      fontSize: 16,
+      fontWeight: '800',
     }
 });
 

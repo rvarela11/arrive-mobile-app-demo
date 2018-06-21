@@ -3,11 +3,11 @@ import styleVariables from '../../../style-variables';
 
 const styles = StyleSheet.create({
   input: {
-    width: '100%',
     backgroundColor: '#fff',
-    padding: 5,
+    marginBottom: 8,
     marginTop: 8,
-    marginBottom: 8
+    padding: 5,
+    width: '100%',
   },
   invalid: {
     backgroundColor: styleVariables.red,

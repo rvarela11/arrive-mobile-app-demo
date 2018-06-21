@@ -1,8 +1,7 @@
 import { SUBMIT_DOCUMENT, RESET_DOCUMENT_SAVED } from '../../store/actionTypes';
 
 const initialState = {
-  documentWasSaved: false,
-  hasDocumentBeenEdited: false
+  documentWasSaved: false
 }
 
 const documentReducer = (state = initialState , action) => {
@@ -11,14 +10,12 @@ const documentReducer = (state = initialState , action) => {
             if(action.docStatus === 'SAVE CHANGES') {
               return {
                 ...state,
-                documentWasSaved: true,
-                hasDocumentBeenEdited: true
+                documentWasSaved: true
               }
             }
             return {
               ...state,
-              documentWasSaved: true,
-              hasDocumentBeenEdited: false
+              documentWasSaved: true
             }
         case RESET_DOCUMENT_SAVED:
             return {
