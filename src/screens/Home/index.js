@@ -3,14 +3,14 @@ import React,{ Component } from 'react';
 import {
     View,
     Text,
-    ImageBackground,
-    FlatList
+    ImageBackground
 } from 'react-native';
 import { connect } from 'react-redux';
 
 // Components
 import DefaultToast from '../../components/UI/DefaultToast';
-import LoadListItem from '../../components/LoadListItem';
+import LoadList from '../../components/LoadList';
+import NoDocumentsContainer from '../../components/NoDocumentsContainer';
 
 // Styles
 import styles from './styles';
@@ -107,37 +107,27 @@ class HomeScreen extends Component {
         let list = null;
 
         if (this.props.homeDocuments.length > 0) {
-          list = (
-              <FlatList
-                data={this.props.homeDocuments}
-                keyExtractor={this._keyExtractor}
-                renderItem={({item}) => {
-                  return (
-                    <LoadListItem
-                        key={item.id}
-                        document={item}
-                        navigator={this.props.navigator}
-                        getLoadListItemId={this.getLoadListItemId}
-                    />
-                  );
-                }}
-              />
-          )
+            list = (
+                <LoadList
+                    data={this.props.homeDocuments}
+                    keyExtractor={this._keyExtractor}
+                    navigator={this.props.navigator}
+                    getLoadListItemId={this.getLoadListItemId}
+                />
+            );
         } else {
-          list = (
-            <View style={styles.noDocumentsContainer}>
-              <Text style={styles.noDocumentsContainer__Text}> No Documents </Text>
-            </View>
-          )
+            list = (
+                <NoDocumentsContainer />
+            );
         }
 
     return (
         <View style={styles.homeMainContainer}>
             <View style={styles.toastContainer}>
-              <DefaultToast
-                  showToast={showToast}
-                  valid={isToastSuccessful}
-              >Upload {this.state.toastStatus}</DefaultToast>
+                <DefaultToast
+                    showToast={showToast}
+                    valid={isToastSuccessful}
+                >Upload {this.state.toastStatus}</DefaultToast>
             </View>
             {list}
         </View>

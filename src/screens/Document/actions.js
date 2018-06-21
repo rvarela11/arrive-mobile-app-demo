@@ -1,9 +1,7 @@
-export const submitDocument = (documentInfo, docStatus) => {
-    return (dispatch) => {
-        dispatch({
-            type: 'SUBMIT_DOCUMENT',
-            payload: documentInfo,
-            docStatus
-        });
-    }
-}
+import { SUBMIT_DOCUMENT } from '../../store/actionTypes';
+
+export const submitDocument = (documentInfo, docStatus) => ({
+    type: SUBMIT_DOCUMENT,
+    payload: documentInfo,
+    docStatus
+});
