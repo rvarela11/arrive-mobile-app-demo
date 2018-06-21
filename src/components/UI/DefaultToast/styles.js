@@ -3,8 +3,8 @@ import styleVariables from '../../../style-variables';
 
 const styles = StyleSheet.create({
   toast: {
+    borderRadius: 2,
     padding: 8,
-    borderRadius: 2
   },
   showToast: {
     display: 'flex'

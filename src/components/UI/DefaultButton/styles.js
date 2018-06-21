@@ -2,16 +2,16 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   button: {
-      padding: 10,
-      margin: 5,
+      alignItems: 'center',
       borderRadius: 2,
-      alignItems: 'center'
+      margin: 5,
+      padding: 10,
   },
   buttonWithIcon: {
       flexDirection: 'row',
   },
   disabled: {
-    backgroundColor: '#eee'
+      backgroundColor: '#eee'
   }
 })
 

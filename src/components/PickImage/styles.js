@@ -2,19 +2,19 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     documentImage: {
+        height: "100%",
         width: "100%",
-        height: "100%"
     },
     imagePickerContainer: {
-        width: "100%",
         height: 200,
+        width: "100%",
     },
     takePhotoButton: {
-        flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
+        flexDirection: 'column',
+        height: '100%',
+        justifyContent: 'center',
         width: '100%',
-        height: '100%'
     }
 });
 
